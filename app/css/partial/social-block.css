@@ -1,0 +1,86 @@
+.soc-elem__link, .soc-elem__link:before, .fa {
+  -webkit-transition: all 0.35s;
+  -o-transition: all 0.35s;
+  transition: all 0.35s;
+  -webkit-transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+       -o-transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+          transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59); }
+
+.social-group__block {
+  height: 90px;
+  font-size: 0;
+  text-align: center;
+  padding: 10px;
+  background: #486684;
+  max-width: 400px;
+  margin: 0 auto;
+  -webkit-border-radius: 50px;
+          border-radius: 50px; }
+
+.soc-elem {
+  margin: 0 10px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 28%;
+          border-radius: 28%;
+  text-align: center;
+  background-color: #fff;
+  opacity: 0.99;
+  -webkit-box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1); }
+  .soc-elem__link {
+    display: block;
+    cursor: pointer; }
+    .soc-elem__link_facebook:before {
+      background-color: #3b5998; }
+    .soc-elem__link_twitter:before {
+      background-color: #3cf; }
+    .soc-elem__link_google:before {
+      background-color: #dc4a38; }
+    .soc-elem__link_dribbble:before {
+      background-color: #f26798; }
+    .soc-elem__link_skype:before {
+      background-color: #00aff0; }
+    .soc-elem__link:before {
+      content: '';
+      width: 120%;
+      height: 120%;
+      position: absolute;
+      top: 90%;
+      left: -110%;
+      -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg); }
+
+.soc-elem__link:focus:before,
+.soc-elem__link:hover:before {
+  top: -10%;
+  left: -10%; }
+
+.soc-elem__link:focus .fa,
+.soc-elem__link:hover .fa {
+  color: #fff;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1); }
+
+.fa {
+  font-size: 38px;
+  vertical-align: middle;
+  -webkit-transform: scale(0.8);
+      -ms-transform: scale(0.8);
+          transform: scale(0.8); }
+  .fa-facebook {
+    color: #3b5998; }
+  .fa-twitter {
+    color: #3cf; }
+  .fa-google {
+    color: #dc4a38; }
+  .fa-dribbble {
+    color: #f26798; }
+  .fa-skype {
+    color: #00aff0; }

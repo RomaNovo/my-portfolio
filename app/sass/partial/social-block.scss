@@ -1,0 +1,106 @@
+%transitionAll {
+	transition: all 0.35s;
+	transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+
+.social-group__block {
+	height: 90px;
+	font-size: 0;
+	text-align: center;	
+	padding: 10px;
+	background: #486684;
+	max-width: 400px;
+	margin: 0 auto;
+	border-radius: 50px;
+}
+
+.soc-elem {
+	margin: 0 10px;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 28%; 
+	text-align: center;
+	background-color: #fff;
+	opacity: 0.99;
+	box-shadow: 0 5px 15px -5px rgba(0,0,0,0.1);
+	
+	&__link {
+		@extend %transitionAll;
+		display: block;
+		cursor: pointer;
+
+		&_facebook:before {
+			background-color: #3b5998;
+		}
+
+		&_twitter:before {
+			background-color: #3cf;
+		}
+
+		&_google:before {
+			background-color: #dc4a38;;
+		}
+
+		&_dribbble:before {
+			background-color:  #f26798;
+		}
+
+		&_skype:before {
+			background-color:  #00aff0;
+		}
+
+		&:before {
+			@extend %transitionAll;
+			content: '';
+			width: 120%;
+			height: 120%;
+			position: absolute;
+			top: 90%;
+			left: -110%;
+			transform: rotate(45deg);
+		}	
+	}
+}
+
+.soc-elem__link:focus:before,
+.soc-elem__link:hover:before {
+	top: -10%;
+  	left: -10%;
+}
+
+.soc-elem__link:focus .fa,
+.soc-elem__link:hover .fa {
+	color: #fff;
+  	transform: scale(1);
+}
+
+.fa {
+	@extend %transitionAll;
+	font-size:38px;
+	vertical-align: middle;
+	transform: scale(0.8);	
+
+	&-facebook {
+		color: #3b5998;
+	}
+
+	&-twitter {
+		color: #3cf;
+	}
+
+	&-google {
+		color: #dc4a38;
+	}
+
+	&-dribbble {
+		color:  #f26798;
+	}
+
+	&-skype {
+		color:  #00aff0;
+	}
+}

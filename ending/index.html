@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/main.css">
+	
+	
+	<script>
+	function _(id){ return document.getElementById(id); }
+	function submitForm(){
+		_("mybtn").disabled = true;
+		_("status").innerHTML = 'please wait ...';
+		var Formdata = new FormData();
+		Formdata.append( "n", _("n").value );
+		Formdata.append( "e", _("e").value );
+		Formdata.append( "m", _("m").value );
+		console.log(Formdata.get('n'));
+		var ajax = new XMLHttpRequest();
+		ajax.open( "POST", "example_parser.php" );
+		ajax.onreadystatechange = function() {
+			if(ajax.readyState == 4 && ajax.status == 200) {
+				if(ajax.responseText == "success"){
+					_("my_form").innerHTML = '<h2>Thanks '+_("n").value+', your message has been sent.</h2>';
+				} else {
+					_("status").innerHTML = ajax.responseText;
+					_("mybtn").disabled = false;
+				}
+			}
+		}
+		ajax.send(Formdata);
+	}
+	</script>
+</head>
+<body>
+	
+	
+<header class="header" id="header">
+	 <div class="header__logo">
+		<div class="logo">
+			 <div class="logo__pic">
+				<img src="img/logo.png" width="200px"alt="" class="logo__img">
+			</div>		
+		</div>
+	</div> 
+ 	<div class="header__content">
+		<div class="header__intro">
+			<div class="intro">
+				<div class="intro__item">
+					<p>Hello my name is Roma and I am</p>
+				</div>
+				<div class="intro__item">
+					<h1>Web developer</h1>
+				</div>
+				<div class="intro__item">
+					<p>creating Web Application</p>
+				</div>
+			</div>
+		</div>
+		<div class="header__triangle-group">
+			<div class="triangle-group">
+				<div class="triangle-group__elem">
+					<div class="triangle triangle__odd">
+						<div class="triangle__desc triangle__desc_top">Html</div>
+						<div class="triangle__icon"></div>
+					</div>
+				</div>
+				<div class="triangle-group__elem">
+					<div class="triangle triangle__even">
+						<div class="triangle__desc triangle__desc_btm">Css</div>
+						<div class="triangle__icon"></div>
+					</div>
+				</div>
+				<div class="triangle-group__elem">
+					<div class="triangle triangle__odd">
+						<div class="triangle__desc triangle__desc_top">Js</div>
+						<div class="triangle__icon"></div>
+					</div>
+				</div>
+				<div class="triangle-group__elem">
+					<div class="triangle triangle__even">
+						<div class="triangle__desc triangle__desc_btm">Bem</div>
+						<div class="triangle__icon"></div>
+					</div>
+				</div>
+				<div class="triangle-group__elem">
+					<div class="triangle triangle__odd">
+						<div class="triangle__desc triangle__desc_top">Ajax</div>
+						<div class="triangle__icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>	
+</header> 
+<nav class="nav">	
+	<div class="nav__wrapper">
+		<div class="nav__burger">
+			<div class="burger">
+				<span class="burger__elem"></span>
+				<span class="burger__elem"></span>
+				<span class="burger__elem"></span>
+			</div>
+		</div>
+		<div class="nav__list">
+			<ul class="list">
+				<li class="list__item">
+					<a href="#header" class="nav__link">Home</a>
+				</li>
+				<li class="list__item">
+					<a href="#about" class="nav__link">About me</a>
+				</li>
+				<li class="list__item">
+					<a href="#skills" class="nav__link">Skills</a>
+				</li>
+				<li class="list__item">
+					<a href="#my-works" class="nav__link">Works</a>
+				</li>
+				<li class="list__item">
+					<a href="#contact" class="nav__link">Contact</a>
+				</li>
+			</ul>
+		</div>	
+	</div>	
+</nav>
+<section class="about" id="about">
+	<div class="container">
+		<div class="about__wrapper">
+			<div class="about__descr descr">
+				<h1 class="descr__title">Обо мне</h1>
+				<p class="descr__text"></p>
+			</div>
+			<div class="about__content">
+				<div class="about__info info">
+					<h2 class="info__title">Немного о себе</h2>
+					<p class="info__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quibusdam impedit pariatur nemo delectus fugiat, magni harum voluptatibus tempora commodi sint temporibus quae accusamus hic consequatur blanditiis voluptates eveniet necessitatibus saepe aspernatur ipsa voluptatum esse asperiores! Quisquam ipsa laborum libero reprehenderit, corrupti. Voluptas ducimus quia fugiat architecto, sequi nihil nisi!</p>
+				</div>
+				<div class="about__photo photo">
+					<h2 class="photo__title">Фото</h2>
+					<div class="photo__pic">
+						
+					</div>
+				</div>
+				<div class="about__personal personal">
+					<h2 class="personal__title">Персональная информация</h2>
+					<p class="personal__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione aliquid distinctio, id ipsum. Maiores eum quos neque ab, suscipit aperiam eaque inventore nostrum corporis. Numquam illum culpa molestiae dicta expedita magni. Modi facilis eius cumque culpa quos autem, asperiores quia deserunt, fuga ex, pariatur commodi eaque corrupti alias nam qui!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="skills" id="skills">
+	<div class="container">
+		<div class="skills__wrapper">
+			<div class="skills__descr descr">
+				<h1 class="descr__title">Мои навыки</h1>
+			</div>
+			<div class="skills__content">
+				<div class="skills__education">
+					<div class="education">
+						<!-- <div class="education__headline headline">
+							<div class="headline__icon headline__icon_education"></div>
+							<h2 class="headline__title headline__title_education">Образование</h2>
+						</div> -->
+						<ul class="education__list list">
+							<li class="list__item">
+								<p class="education__title">Высшее образование</p>
+								<p class="education__text">Донецкий Национальный Университет(ДонНТУ), декабрь 2007 г. Факультет Экономики и Менеджмента(ФЭМ), специальность 'Менеджмент в организации'(МП). Квалификация - магистр.</p>
+							</li>
+							<li class="list__item">
+								<p class="education__title">Знания в Web</p>
+								<p class="education__text">Закончил курсы по специальности Front-end Deleloper. Также обучаюсь просматривая видеокурсы, читаю книги, документации, статьи, форумы.</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				 <div class="skills__progress">
+				 	<div class="progress">
+				 		<!-- <div class="progress__headline headline">
+				 			<div class="headline__icon headline__icon_progress"></div>
+				 			<h2 class="headline__title headline__title_progress">Навыки</h2>
+				 		</div> -->
+				 		<ul class="progress__list list">
+				 			<li class="list__item">
+				 				<canvas class='my_canvas1' width="120" height="120"></canvas>
+				 				<div class="progress__desc">HTML</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas2' width="120" height="120"></canvas>
+				 				<div class="progress__desc">CSS</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas3' width="120" height="120"></canvas>
+				 				<div class="progress__desc">JS</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas4' width="120" height="120"></canvas>
+				 				<div class="progress__desc">Hendlbars</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas5' width="120" height="120"></canvas>
+				 				<div class="progress__desc">Angular</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas6' width="120" height="120"></canvas>
+				 				<div class="progress__desc">BEM</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas7' width="120" height="120"></canvas>
+				 				<div class="progress__desc">Gulp</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas8' width="120" height="120"></canvas>
+				 				<div class="progress__desc">Sass</div>
+				 			</li>
+				 			<li class="list__item">
+				 				<canvas class='my_canvas9' width="120" height="120"></canvas>
+				 				<div class="progress__desc">Sass</div>
+				 			</li>
+				 		</ul>
+				 	</div>			
+				</div> 
+			</div>
+		</div>
+	</div>
+</section>
+<section class="my-works" id="my-works">
+	<div class="container">
+		<div class="my-works__wrapper">
+			<div class="my-works__descr descr">
+				<h1 class="descr__title">Мои работы</h1>
+				<p class="descr__text"></p>
+			</div>
+			<div class="my-works__gallery">
+				<div class="gallery">
+					<div class="gallery__elem">
+						<div class="block block_green">
+							<div class="block__caption"></div>
+						</div>
+					</div>
+					<div class="gallery__elem">
+						<div class="block block_summary">
+							<div class="block__caption"></div>
+						</div>
+					</div>
+					<div class="gallery__elem">
+						<div class="block block_barberi">
+							<div class="block__caption"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="contact" id="contact">	
+<div class="container">
+	<div class="contact__wrapper">
+		<div class="contact__descr descr">
+			<h1 class="descr__title">Contact me</h1>
+			<p class="descr__text"></p>
+		</div>
+		<div class="contact__address address">
+			<div class="address__item">
+				<span class="address__icon"><i class="fa fa-map-marker"></i></span>
+				<span class="address__text">Ukraine Kiev</span>
+			</div>			
+			<div class="address__item">
+				<span class="address__icon"><i class="fa fa-envelope"></i></span>
+				<span class="address__text">roma.novomodnyi@gmail.com</span>
+			</div>	
+			<div class="address__item">
+				<span class="address__icon"><i class="fa fa-mobile"></i></span>
+				<span class="address__text">+38 (050) 927 38 57</span>
+			</div>			
+		</div>
+		<div class="contact__form">
+			<form id="form" class="form">
+				<div class="form__title">LEAVE ME A MESSAGE</div>
+				<div class="form__wrapper">
+					<div class="form__row">
+						<div class="field">
+							<div class="field__label">Your Name</div>
+							<div class="field__instance">
+								<div class="formField">
+									<input type="text" class="input" placeholder="Your Name">
+								</div>
+							</div>
+							<span class="field__error">Введите пожалуйста имя</span>
+						</div>
+					</div>
+					<div class="form__row">
+						<div class="field">
+							<div class="field__label">Your Email</div>
+							<div class="field__instance">
+								<div class="formField">
+									<input type="email" class="input" placeholder="Your Email">
+								</div>
+							</div>
+							<span class="field__error">Введите пожалуйста майл</span>
+						</div>
+					</div>
+					<div class="form__row">
+						<div class="field">
+							<div class="field__label">Message</div>
+							<div class="field__instance">
+								<div class="formField">
+									<textarea name="" id="" class="textarea" rows="4" placeholder="Message..."></textarea> 
+								</div>
+							</div>
+							<span class="field__error">Введите пожалуйста сообщение</span>
+						</div>
+					</div>
+					<div class="form__row">
+						<div class="field">	
+							<div class="field__instance">
+								<div class="formField">
+									<input class="submit" type="submit" value="Send e-mail">
+								</div>
+								<span class="field__error field__error_button">Ваше сообщение отправлено</span>
+							</div>		
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</section>
+<footer class="footer">
+	<div class="container">
+		<div class="social-group">
+			<div class="social-group__block">
+				<div class="soc-elem">
+					<a class="soc-elem__link soc-elem__link_google">
+						<i class="fa fa-google"></i>
+					</a>
+				</div>
+				<div class="soc-elem">
+					<a class="soc-elem__link soc-elem__link_facebook">
+						<i class="fa fa-facebook"></i>
+					</a>
+				</div>
+				<div class="soc-elem">
+					<a class="soc-elem__link soc-elem__link_linkedin">
+						<i class="fa fa-linkedin" aria-hidden="true"></i>
+					</a>
+				</div>
+				
+				<div class="soc-elem">
+					<a href="https://github.com/RomaNovo" class="soc-elem__link soc-elem__link_github">
+						<i class="fa fa-github" aria-hidden="true"></i>
+					</a>
+				</div>
+				<div class="soc-elem">
+					<a class="soc-elem__link soc-elem__link_skype">
+						<i class="fa fa-skype"></i>
+					</a>
+				</div>
+			</div>
+		</div>	
+		<p class="author">Copyright © 2018 Novomodniy Roman.</p>	
+	</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
