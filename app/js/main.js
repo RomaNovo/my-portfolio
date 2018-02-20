@@ -156,7 +156,7 @@ window.onload = function() {
 	var groupTab = document.querySelectorAll('header, section');
 	function watchTab(v) {
 		var scroll = window.pageYOffset;
-		if(scroll >= v.offsetTop && scroll < v.offsetTop + v.offsetHeight) {
+		if(scroll + 100 >= v.offsetTop && scroll < v.offsetTop + v.offsetHeight - 100) {
 			var id = v.getAttribute('id');
 			document.querySelector('[href="#' + id + '"]').classList.add('nav__link_active');
 		}
