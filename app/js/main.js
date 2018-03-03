@@ -73,6 +73,13 @@ window.onload = function() {
 		var sim = setInterval(progressSim, 15);
 	}
 
+var skills = _q('#skills');
+
+var heightSkills = skills.offsetTop;
+
+var scrol = window.pageYOffset;
+var count = 0;	
+	if(scrol + 200 > heightSkills) {
 	test(ctx1,65);
 	test(ctx2,80);	
 	test(ctx3,85);
@@ -82,6 +89,31 @@ window.onload = function() {
 	test(ctx7,85);
 	test(ctx8,90);	
 	test(ctx9,99);
+	count++;
+	}
+
+
+window.addEventListener('scroll', function() {
+	var scrol = window.pageYOffset;
+	if(count > 0) return;
+	if(scrol + 200 > heightSkills) {
+	test(ctx1,65);
+	test(ctx2,80);	
+	test(ctx3,85);
+	test(ctx4,90);
+	test(ctx5,100);
+	test(ctx6,75);
+	test(ctx7,85);
+	test(ctx8,90);	
+	test(ctx9,99);
+	count++;
+	}	
+})
+
+
+		
+
+	
 
 	// ======== CANVAS END ==================
 
@@ -175,3 +207,17 @@ window.onload = function() {
 		});
 	})
 }
+
+/*===================== Dynamic block ==================*/
+
+/*var skills = _q('#skills');
+console.log(skills);
+var heightSkills = skills.offsetTop;
+console.log(heightSkills);
+var scrol = window.pageYOffset;
+console.log(scrol);
+window.addEventListener('scroll', function() {
+	if(scrol > heightSkills) {
+
+	}
+})*/
