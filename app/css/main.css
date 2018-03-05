@@ -31,7 +31,8 @@ h2, body, .nav__list .list, .list {
           box-sizing: border-box; }
 
 body {
-  font: 16px "Roboto-Regular"; }
+  font: 16px "Roboto-Regular";
+  padding: 25px; }
 
 /* ---------------------- Header -------------------------- */
 .container {

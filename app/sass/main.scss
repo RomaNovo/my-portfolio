@@ -58,7 +58,8 @@ h2 {
 
 body {
 	@extend %reset;
-	font: 16px $font-robotoReg; 	
+	font: 16px $font-robotoReg; 
+	padding: 25px;	
 }
 
 /* ---------------------- Header -------------------------- */
