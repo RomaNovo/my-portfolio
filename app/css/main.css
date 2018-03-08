@@ -90,9 +90,9 @@ body {
     opacity: 0;
     width: 150px;
     height: 150px;
-    background-color: white;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    background-image: url("../img/55.png");
+    -webkit-background-size: cover;
+            background-size: cover;
     opacity: 0;
     -webkit-animation-name: b;
             animation-name: b;
