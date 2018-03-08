@@ -6,48 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="css/main.css">
-<script>
-	function _(id){ return document.getElementById(id); }
-	function _q(select) {return document.querySelector(select);}
-	function clear() {
-			_q('.input[type=text]').value = '';
-			_q('.input[type=email]').value = '';
-			_q('.textarea').value = '';
-	}
-	function submitForm(){
-		_("submit").disabled = true;
-		// _("status").innerHTML = 'please wait ...';
-		
 
-		var Formdata = new FormData();
-		Formdata.append( "n", _q('.input[type=text]').value );
-		Formdata.append( "e", _q('.input[type=email]').value );
-		Formdata.append( "m", _q('.textarea').value );
-		console.log(Formdata.get('n'));
-		var ajax = new XMLHttpRequest();
-		ajax.open( "POST", "example_parser.php" );
-		ajax.onreadystatechange = function() {
-			/*if(ajax.readyState == 4 && ajax.status == 200) {
-				if(ajax.responseText == "success"){
-					_("my_form").innerHTML = '<h2>Thanks '+_("n").value+', your message has been sent.</h2>';
-				} else {
-					_("status").innerHTML = ajax.responseText;
-					_("mybtn").disabled = false;
-				}
-			}*/
-
-			if(ajax.readyState == 4 && ajax.status == 200) {
-							if(ajax.responseText == "success"){
-								var btnMessage = _('field__error_button');
-								btnMessage.style.display = 'block';
-								clear();
-							}
-						}
-
-		}
-		ajax.send(Formdata);
-	}
-</script>
 </head>
 <body>
 
@@ -376,6 +335,7 @@
 		<p class="author">Copyright © 2018 Novomodniy Roman.</p>	
 	</div>
 </footer>
+<script src="js/form.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

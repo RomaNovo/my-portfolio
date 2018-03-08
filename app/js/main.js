@@ -31,28 +31,6 @@ burger.addEventListener('click', function() {
 
 window.onload = function() {
 /* ============== FORM =================*/
- var formName = _q('.input[type=text]');
- var formEmail = _q('.input[type=email]');
- var formArea = _q('.textarea');
- var labelText = _q('#label-text');
- var labelEmail = _q('#label-email');
- var labelArea = _q('#label-area');
- var form = _q('#form');
-
- form.addEventListener('input', function(e) {
- 	var row = e.target;
- 	var bibik = document.getElementById('label-' + row.dataset.target)
- 	if(row.value.length > 0) {
- 		
- 		bibik.style.opacity = '1';
- 	} else {
- 		bibik.style.opacity = '0';
- 	}
-
- })
-
- var formBtn = document.querySelector('#submit');
- formBtn.addEventListener('click', submitForm);
 
  /*formName.addEventListener('input', function() {
  	if(this.value.length>0){
