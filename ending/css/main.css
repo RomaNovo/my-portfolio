@@ -88,11 +88,11 @@ body {
   .header__logo .logo {
     margin: 50px auto;
     opacity: 0;
-    width: 150px;
+    width: 350px;
     height: 150px;
-    background-color: white;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    background-image: url("../img/logo3.png");
+    -webkit-background-size: cover;
+            background-size: cover;
     opacity: 0;
     -webkit-animation-name: b;
             animation-name: b;
