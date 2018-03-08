@@ -31,6 +31,14 @@ burger.addEventListener('click', function() {
 
 window.onload = function() {
 
+// ====== Triangle ======
+var logo = _q('.logo');
+
+function showLogo() {
+	logo.style.opacity = '1';
+}
+setTimeout(showLogo, 2000);
+
 //====== CANVAS =======
 
 	var ctx1 = _q('.my_canvas1').getContext('2d'),

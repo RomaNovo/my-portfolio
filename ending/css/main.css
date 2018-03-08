@@ -33,7 +33,6 @@ h2, body, .nav__list .list, .list {
 body {
   font: 16px "Roboto-Regular"; }
 
-/* ---------------------- Header -------------------------- */
 .container {
   max-width: 768px;
   margin: 0 auto;
@@ -45,6 +44,7 @@ body {
     .container {
       max-width: 1024px; } }
 
+/* ---------------------- Header -------------------------- */
 .header {
   width: 100%;
   height: 100vh;
@@ -54,28 +54,75 @@ body {
   background-repeat: no-repeat;
   -webkit-background-size: cover;
           background-size: cover;
-  background-color: rgba(44, 62, 80, 0.6); }
-  .header__logo {
-    padding-top: 30px;
-    padding-left: 50px; }
-    .header__logo .logo__pic {
-      width: 250px;
-      height: 75px;
-      background: red;
-      -webkit-border-radius: 50%;
-              border-radius: 50%; }
-    .header__logo .logo__img {
-      width: 100%;
-      height: 100%; }
+  background-color: rgba(44, 62, 80, 0.6);
+  /* &__logo {
+		padding: 0px 0 100px;
+		
+	
+		.logo {
+			
+			&__pic {	
+				
+	
+				width: 300px;
+				height: 100px;
+				border-radius: 50%;
+				
+			}
+			
+			&__img {
+				width: 100%;
+				height: 100%;
+			} 
+		}	
+	} */ }
   .header__intro {
+    padding-top: 100px;
+    padding-bottom: 50px;
     text-align: center; }
     .header__intro .intro {
       font: 20px "Roboto-Regular";
       color: #F8F8FF; }
       .header__intro .intro__item:nth-child(2) {
         font: 40px "Roboto-Bold"; }
+  .header__logo .logo {
+    margin: 50px auto;
+    opacity: 0;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    opacity: 0;
+    -webkit-animation-name: b;
+            animation-name: b;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+    -webkit-animation-delay: 1.7s;
+            animation-delay: 1.7s; }
+
+@-webkit-keyframes b {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
+@keyframes b {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
   .header__triangle-group {
-    margin: 150px auto; }
+    margin: 50px auto;
+    padding-top: 50px; }
     .header__triangle-group .triangle-group {
       margin: 0 auto;
       display: none; }
