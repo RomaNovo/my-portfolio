@@ -52,6 +52,7 @@ window.onload = function() {
  })
 
  var formBtn = document.querySelector('#submit');
+ formBtn.addEventListener('click', submitForm);
 
  /*formName.addEventListener('input', function() {
  	if(this.value.length>0){

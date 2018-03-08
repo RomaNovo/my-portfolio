@@ -8,13 +8,15 @@
 <link rel="stylesheet" href="css/main.css">
 <script>
 	function _(id){ return document.getElementById(id); }
+	function _q(select) {return document.querySelector(select);}
+
 	function submitForm(){
 		_("submit").disabled = true;
 		// _("status").innerHTML = 'please wait ...';
 		var Formdata = new FormData();
-		Formdata.append( "n", _("n").value );
-		Formdata.append( "e", _("e").value );
-		Formdata.append( "m", _("m").value );
+		Formdata.append( "n", _q('.input[type=text]').value );
+		Formdata.append( "e", _q('.input[type=email]').value );
+		Formdata.append( "m", _q('.textarea').value );
 		console.log(Formdata.get('n'));
 		var ajax = new XMLHttpRequest();
 		ajax.open( "POST", "example_parser.php" );
