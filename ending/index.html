@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="css/main.css">
 <script>
 	function _(id){ return document.getElementById(id); }
 	function submitForm(){
-		_("mybtn").disabled = true;
-		_("status").innerHTML = 'please wait ...';
+		_("submit").disabled = true;
+		// _("status").innerHTML = 'please wait ...';
 		var Formdata = new FormData();
 		Formdata.append( "n", _("n").value );
 		Formdata.append( "e", _("e").value );
@@ -19,30 +19,31 @@
 		var ajax = new XMLHttpRequest();
 		ajax.open( "POST", "example_parser.php" );
 		ajax.onreadystatechange = function() {
-			if(ajax.readyState == 4 && ajax.status == 200) {
+			/*if(ajax.readyState == 4 && ajax.status == 200) {
 				if(ajax.responseText == "success"){
 					_("my_form").innerHTML = '<h2>Thanks '+_("n").value+', your message has been sent.</h2>';
 				} else {
 					_("status").innerHTML = ajax.responseText;
 					_("mybtn").disabled = false;
 				}
-			}
+			}*/
+
+			if(ajax.readyState == 4 && ajax.status == 200) {
+							if(ajax.responseText == "success"){
+								var btnMessage = _('field__error_button');
+								btnMessage.style.display = 'block';
+							}
+						}
+
 		}
 		ajax.send(Formdata);
 	}
 </script>
 </head>
+<body>
 
-<body>	
 <header class="header" id="header">
-	 <!-- <div class="header__logo">
-	 		<div class="logo">
-	 			 <div class="logo__pic">
-	 				<img src="img/logo.png" width="200px"alt="" class="logo__img">
-	 			</div>		
-	 		</div> -->
-	</div> 
- 	<div class="header__content">
+	<div class="header__content">
 		<div class="header__intro">
 			<div class="intro">
 				<div class="intro__item">
@@ -57,8 +58,8 @@
 			</div>
 		</div>
 		<div class="header__logo">
-	 		<div class="logo">		
-	 		</div>
+	 		<div class="logo"></div>		
+		</div>
 		<div class="header__triangle-group">
 			<div class="triangle-group">
 				<div class="triangle-group__elem">
@@ -95,6 +96,7 @@
 		</div>		
 	</div>	
 </header> 
+
 <nav class="nav">	
 	<div class="nav__wrapper">
 		<div class="nav__burger">
@@ -218,7 +220,7 @@
 				 			</li>
 				 			<li class="list__item">
 				 				<canvas class='my_canvas9' width="120" height="120"></canvas>
-				 				<div class="progress__desc">Sass</div>
+				 				<div class="progress__desc">Photoshop</div>
 				 			</li>
 				 		</ul>
 				 	</div>			
@@ -279,14 +281,14 @@
 		</div>
 		<div class="contact__form">
 			<form id="form" class="form">
-				<div class="form__title">LEAVE ME A MESSAGE</div>
+				<div class="form__title">Leave me a message</div>
 				<div class="form__wrapper">
 					<div class="form__row">
 						<div class="field">
-							<div class="field__label">Your Name</div>
+							<div class="field__label" id="label-name">Your Name</div>
 							<div class="field__instance">
 								<div class="formField">
-									<input type="text" class="input" placeholder="Your Name">
+									<input type="text" data-target="name" class="input" placeholder="Your Name">
 								</div>
 							</div>
 							<span class="field__error">Введите пожалуйста имя</span>
@@ -294,10 +296,10 @@
 					</div>
 					<div class="form__row">
 						<div class="field">
-							<div class="field__label">Your Email</div>
+							<div class="field__label" id="label-email">Your Email</div>
 							<div class="field__instance">
 								<div class="formField">
-									<input type="email" class="input" placeholder="Your Email">
+									<input type="email" class="input" data-target="email" placeholder="Your Email">
 								</div>
 							</div>
 							<span class="field__error">Введите пожалуйста майл</span>
@@ -305,10 +307,10 @@
 					</div>
 					<div class="form__row">
 						<div class="field">
-							<div class="field__label">Message</div>
+							<div class="field__label" id="label-area">Message</div>
 							<div class="field__instance">
 								<div class="formField">
-									<textarea name="" id="" class="textarea" rows="4" placeholder="Message..."></textarea> 
+									<textarea data-target="area" class="textarea" rows="4" placeholder="Message..."></textarea> 
 								</div>
 							</div>
 							<span class="field__error">Введите пожалуйста сообщение</span>
@@ -318,9 +320,9 @@
 						<div class="field">	
 							<div class="field__instance">
 								<div class="formField">
-									<input class="submit" type="submit" value="Send e-mail">
+									<input class="submit" id="submit" type="submit" value="Send e-mail">
 								</div>
-								<span class="field__error field__error_button">Ваше сообщение отправлено</span>
+								<span class="field__error field__error_button" id="field__error_button">Ваше сообщение отправлено</span>
 							</div>		
 						</div>
 					</div>
