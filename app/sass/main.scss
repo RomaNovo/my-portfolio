@@ -73,6 +73,11 @@ body {
 	@include large-screen {
 		max-width: 1024px;
 	}
+
+	@include extra-large-screen {
+		max-width: 1920px;
+		margin: 0 300px;
+	}
 }
 
 /* ---------------------- Header -------------------------- */
@@ -512,10 +517,11 @@ body {
 }
 
 .skills {
-		background-image: url('../img/s-skills.jpg');
-		background-size: cover;
-		    background-attachment: fixed;
-		padding-bottom: 100px;
+	padding-bottom: 100px;
+	background-image: url('../img/s-skills.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+		
 	&__wrapper {
 		padding-top: 100px;
 	}
@@ -529,7 +535,7 @@ body {
 		
 
 		@include large-screen {
-			display: flex;
+			display: flex;			
 		}
 	}
 
@@ -548,9 +554,9 @@ body {
 			
 			&__headline {
 				display: flex;
-				align-items: center;
 				justify-content: center;
-
+				align-items: center;
+				
 				@include large-screen {
 					justify-content: flex-end;
 				}		
@@ -558,13 +564,15 @@ body {
 
 			&__list {
 				padding-top: 100px;
+
 				.list {
+
 					&__item {
 
-					&:first-child {
-						padding-bottom: 70px;
+						&:first-child {
+							padding-bottom: 70px;
+						}
 					}
-				}
 				}
 				
 			}
@@ -584,7 +592,6 @@ body {
 	}
 
 	&__progress {
-	
 		padding-top: 20px;
 
 		@include large-screen {
@@ -595,31 +602,41 @@ body {
 
 
 		.progress {
+
 			&__desc {
 				text-align: center;	
-				padding-top: 10px;
+				padding: 10px;
 				color: $color-add;
 				font-weight: bold;
+				
 			}
 
-			&__headline {
+
+
+
+
+			/* &__headline {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-
+			
 				@include large-screen {
 					justify-content: flex-start;
 				}
-			}
-			
-			&__list {
-				display: flex;
-				justify-content: space-between;
-				flex-flow: wrap;
-				padding-top: 30px;
+			} */
+			&__canvas {
+				/* border: 1px solid black; */
 				
-				 margin: 0 auto;
+				
+			}
 
+			&__list {
+				margin: 0 auto;
+				padding-top: 30px;
+				display: flex;
+				flex-flow: wrap;
+				justify-content: space-between;
+				
 				@include small-screen {
 					width: 100%;
 					
@@ -637,7 +654,10 @@ body {
 				}
 				
 				.list__item {
-	
+					
+					/* background: blue; */
+					/* border: 1px solid black; */
+					margin-bottom: 10px;
 
 				/* 	padding-right: 40px; */
 					/* &:nth-child(1) {
@@ -658,6 +678,7 @@ body {
 									
 
 					@include small-screen {
+						padding: 0 30px;
 						/* padding-right: 100px; */
 						// &:nth-child(1) {
 						// 	padding-right: 100px;
@@ -671,7 +692,7 @@ body {
 					}
 					
 					@include medium-screen {
-						
+						padding: 0 30px;
 						/* &:nth-child(1) {
 							padding-right: 90px;
 						}
@@ -684,8 +705,9 @@ body {
 					}
 
 					@include large-screen {
-						padding-right: 20px;
-						margin-bottom: 40px;
+						padding: 0;
+
+
 					/* 	&:nth-child(1) {
 						padding-right: 25px;
 					}
@@ -695,7 +717,15 @@ body {
 					&:nth-child(3) {
 						padding-right: 25px;
 					} */
-					}					
+					}
+
+					@include extra-large-screen {
+						padding: 20px;
+					}
+
+
+
+
 				}				
 			}			
 		}

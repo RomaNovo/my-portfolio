@@ -16,3 +16,9 @@
 	}
 }
 
+@mixin extra-large-screen() {
+	@media screen and (min-width: 1900px) {
+		@content;
+	}
+}
+

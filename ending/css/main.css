@@ -43,6 +43,10 @@ body {
   @media screen and (min-width: 1024px) {
     .container {
       max-width: 1024px; } }
+  @media screen and (min-width: 1900px) {
+    .container {
+      max-width: 1920px;
+      margin: 0 300px; } }
 
 /* ---------------------- Header -------------------------- */
 .header {
@@ -443,11 +447,11 @@ body {
                 order: 1; } }
 
 .skills {
+  padding-bottom: 100px;
   background-image: url("../img/s-skills.jpg");
   -webkit-background-size: cover;
           background-size: cover;
-  background-attachment: fixed;
-  padding-bottom: 100px; }
+  background-attachment: fixed; }
   .skills__wrapper {
     padding-top: 100px; }
   .skills__descr {
@@ -475,14 +479,14 @@ body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
         -ms-flex-pack: center;
-            justify-content: center; }
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
     @media screen and (min-width: 1024px) {
       .skills__education .education__headline {
         -webkit-box-pack: end;
@@ -511,56 +515,52 @@ body {
         -webkit-flex: 1 0 50%;
             -ms-flex: 1 0 50%;
                 flex: 1 0 50%; } }
-    .skills__progress .progress__desc {
-      text-align: center;
-      padding-top: 10px;
-      color: #EC7C26;
-      font-weight: bold; }
-    .skills__progress .progress__headline {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-          -ms-flex-align: center;
-              align-items: center;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-          -ms-flex-pack: center;
-              justify-content: center; }
-      @media screen and (min-width: 1024px) {
-        .skills__progress .progress__headline {
-          -webkit-box-pack: start;
-          -webkit-justify-content: flex-start;
-              -ms-flex-pack: start;
-                  justify-content: flex-start; } }
-    .skills__progress .progress__list {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      -webkit-flex-flow: wrap;
-          -ms-flex-flow: wrap;
-              flex-flow: wrap;
-      padding-top: 30px;
-      margin: 0 auto; }
-      @media screen and (min-width: 420px) {
-        .skills__progress .progress__list {
-          width: 100%; } }
-      @media screen and (min-width: 768px) {
-        .skills__progress .progress__list {
-          width: 100%; } }
-      @media screen and (min-width: 1024px) {
-        .skills__progress .progress__list {
-          width: 100%; } }
-      .skills__progress .progress__list .list__item {
-        /* 	padding-right: 40px; */
-        /* &:nth-child(1) {
+    .skills__progress .progress {
+      /* &__headline {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			
+				@include large-screen {
+					justify-content: flex-start;
+				}
+			} */ }
+      .skills__progress .progress__desc {
+        text-align: center;
+        padding: 10px;
+        color: #EC7C26;
+        font-weight: bold; }
+      .skills__progress .progress__canvas {
+        /* border: 1px solid black; */ }
+      .skills__progress .progress__list {
+        margin: 0 auto;
+        padding-top: 30px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-flow: wrap;
+            -ms-flex-flow: wrap;
+                flex-flow: wrap;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+                justify-content: space-between; }
+        @media screen and (min-width: 420px) {
+          .skills__progress .progress__list {
+            width: 100%; } }
+        @media screen and (min-width: 768px) {
+          .skills__progress .progress__list {
+            width: 100%; } }
+        @media screen and (min-width: 1024px) {
+          .skills__progress .progress__list {
+            width: 100%; } }
+        .skills__progress .progress__list .list__item {
+          /* background: blue; */
+          /* border: 1px solid black; */
+          margin-bottom: 10px;
+          /* 	padding-right: 40px; */
+          /* &:nth-child(1) {
 						padding-right: 3rem;
 					}
 					&:nth-child(3) {
@@ -575,12 +575,14 @@ body {
 					&:nth-child(9) {
 						padding-right: 3rem;
 					} */ }
-        @media screen and (min-width: 420px) {
-          .skills__progress .progress__list .list__item {
-            /* padding-right: 100px; */ } }
-        @media screen and (min-width: 768px) {
-          .skills__progress .progress__list .list__item {
-            /* &:nth-child(1) {
+          @media screen and (min-width: 420px) {
+            .skills__progress .progress__list .list__item {
+              padding: 0 30px;
+              /* padding-right: 100px; */ } }
+          @media screen and (min-width: 768px) {
+            .skills__progress .progress__list .list__item {
+              padding: 0 30px;
+              /* &:nth-child(1) {
 							padding-right: 90px;
 						}
 						&:nth-child(2) {
@@ -589,11 +591,10 @@ body {
 						&:nth-child(3) {
 							padding-right: 90px;
 						} */ } }
-        @media screen and (min-width: 1024px) {
-          .skills__progress .progress__list .list__item {
-            padding-right: 20px;
-            margin-bottom: 40px;
-            /* 	&:nth-child(1) {
+          @media screen and (min-width: 1024px) {
+            .skills__progress .progress__list .list__item {
+              padding: 0;
+              /* 	&:nth-child(1) {
 						padding-right: 25px;
 					}
 					&:nth-child(2) {
@@ -602,6 +603,9 @@ body {
 					&:nth-child(3) {
 						padding-right: 25px;
 					} */ } }
+          @media screen and (min-width: 1900px) {
+            .skills__progress .progress__list .list__item {
+              padding: 20px; } }
 
 .my-works {
   background-color: #F8F8FF; }

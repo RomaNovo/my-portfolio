@@ -1,5 +1,5 @@
 
-var colCanvas    = _qA('.my_canvas'),
+var colCanvas    = _qA('.progress__canvas'),
  	arrCanvas    = [];
  	skills 	     = _q('#skills'),
  	heightSkills = skills.offsetTop,
