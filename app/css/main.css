@@ -530,8 +530,6 @@ body {
         padding: 10px;
         color: #EC7C26;
         font-weight: bold; }
-      .skills__progress .progress__canvas {
-        /* border: 1px solid black; */ }
       .skills__progress .progress__list {
         margin: 0 auto;
         padding-top: 30px;
@@ -556,53 +554,16 @@ body {
           .skills__progress .progress__list {
             width: 100%; } }
         .skills__progress .progress__list .list__item {
-          /* background: blue; */
-          /* border: 1px solid black; */
-          margin-bottom: 10px;
-          /* 	padding-right: 40px; */
-          /* &:nth-child(1) {
-						padding-right: 3rem;
-					}
-					&:nth-child(3) {
-						padding-right: 3rem;
-					}
-					&:nth-child(5) {
-						padding-right: 3rem;
-					}
-					&:nth-child(7) {
-						padding-right: 3rem;
-					}
-					&:nth-child(9) {
-						padding-right: 3rem;
-					} */ }
+          margin-bottom: 10px; }
           @media screen and (min-width: 420px) {
             .skills__progress .progress__list .list__item {
-              padding: 0 30px;
-              /* padding-right: 100px; */ } }
+              padding: 0 30px; } }
           @media screen and (min-width: 768px) {
             .skills__progress .progress__list .list__item {
-              padding: 0 30px;
-              /* &:nth-child(1) {
-							padding-right: 90px;
-						}
-						&:nth-child(2) {
-							padding-right: 90px;
-						}
-						&:nth-child(3) {
-							padding-right: 90px;
-						} */ } }
+              padding: 0 30px; } }
           @media screen and (min-width: 1024px) {
             .skills__progress .progress__list .list__item {
-              padding: 0;
-              /* 	&:nth-child(1) {
-						padding-right: 25px;
-					}
-					&:nth-child(2) {
-						padding-right: 25px;
-					}
-					&:nth-child(3) {
-						padding-right: 25px;
-					} */ } }
+              padding: 0; } }
           @media screen and (min-width: 1900px) {
             .skills__progress .progress__list .list__item {
               padding: 20px; } }
@@ -944,7 +905,8 @@ body {
               border: 1px solid #444; }
 
 .footer {
-  background-color: #2c3e50; }
+  background-color: #2c3e50;
+  padding: 20px 0; }
   .footer .social-group {
     padding-top: 20px; }
   .footer .soc-elem__link, .footer .soc-elem__link:before, .footer .soc-elem__link .fa {
@@ -960,7 +922,7 @@ body {
     text-align: center;
     margin: 0 auto; }
   .footer .soc-elem {
-    margin: 0 10px;
+    margin: 0 20px;
     display: inline-block;
     width: 40px;
     height: 40px;

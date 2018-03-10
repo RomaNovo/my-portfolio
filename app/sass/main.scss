@@ -348,8 +348,6 @@ body {
 		}
 		
 	}
-
-
 }
 /* --------------------- About ------------------------- */
 .descr {
@@ -574,7 +572,6 @@ body {
 						}
 					}
 				}
-				
 			}
 
 			&__title {		
@@ -611,10 +608,6 @@ body {
 				
 			}
 
-
-
-
-
 			/* &__headline {
 				display: flex;
 				align-items: center;
@@ -624,11 +617,6 @@ body {
 					justify-content: flex-start;
 				}
 			} */
-			&__canvas {
-				/* border: 1px solid black; */
-				
-				
-			}
 
 			&__list {
 				margin: 0 auto;
@@ -648,84 +636,27 @@ body {
 				}
 
 				@include large-screen {
-					// margin: 0 auto;
-					
 					width: 100%;
 				}
 				
 				.list__item {
-					
-					/* background: blue; */
-					/* border: 1px solid black; */
 					margin-bottom: 10px;
-
-				/* 	padding-right: 40px; */
-					/* &:nth-child(1) {
-						padding-right: 3rem;
-					}
-					&:nth-child(3) {
-						padding-right: 3rem;
-					}
-					&:nth-child(5) {
-						padding-right: 3rem;
-					}
-					&:nth-child(7) {
-						padding-right: 3rem;
-					}
-					&:nth-child(9) {
-						padding-right: 3rem;
-					} */
-									
 
 					@include small-screen {
 						padding: 0 30px;
-						/* padding-right: 100px; */
-						// &:nth-child(1) {
-						// 	padding-right: 100px;
-						// }
-						// &:nth-child(2) {
-						// 	padding-right: 100px;
-						// }
-						// &:nth-child(3) {
-						// 	padding-right: 100px;
-						// }
 					}
 					
 					@include medium-screen {
 						padding: 0 30px;
-						/* &:nth-child(1) {
-							padding-right: 90px;
-						}
-						&:nth-child(2) {
-							padding-right: 90px;
-						}
-						&:nth-child(3) {
-							padding-right: 90px;
-						} */
 					}
 
 					@include large-screen {
 						padding: 0;
-
-
-					/* 	&:nth-child(1) {
-						padding-right: 25px;
-					}
-					&:nth-child(2) {
-						padding-right: 25px;
-					}
-					&:nth-child(3) {
-						padding-right: 25px;
-					} */
 					}
 
 					@include extra-large-screen {
 						padding: 20px;
 					}
-
-
-
-
 				}				
 			}			
 		}
@@ -941,7 +872,6 @@ body {
 		padding-bottom: 75px;
 
 		.form {
-			// background-color: #000;
 			padding: 0 40px 40px;
 
 			&__title {
@@ -987,7 +917,6 @@ body {
 					}
 				}
 				
-
 				.field {		
 					position: relative;
 					
@@ -1098,6 +1027,7 @@ body {
 
 .footer {
 	background-color: #2c3e50;
+	padding: 20px 0;
 		
 	.social-group {
 		padding-top: 20px;
@@ -1116,7 +1046,8 @@ body {
 	}
 
 	.soc-elem {
-		margin: 0 10px;
+
+		margin: 0 20px;
 		display: inline-block;
 		width: 40px;
 		height: 40px;

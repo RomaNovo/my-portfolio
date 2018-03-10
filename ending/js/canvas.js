@@ -10,7 +10,7 @@ function showCanvas() {
 	colCanvas.forEach(function(v,i) {
 		var progress = v.dataset.progress;
 		arrCanvas[i] = v.getContext('2d');
-		drawCanvas.call(null, arrCanvas[i], progress);
+		drawCanvas(arrCanvas[i], progress);
 	})
 }
 
