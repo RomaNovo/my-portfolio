@@ -69,21 +69,23 @@ body {
       color: #F8F8FF; }
       .header__intro .intro__item:nth-child(2) {
         font: 40px "Roboto-Bold"; }
-  .header__logo .logo {
-    margin: 50px auto 0;
-    opacity: 0;
-    width: 150px;
-    height: 150px;
-    background-color: white;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
-    opacity: 0;
-    -webkit-animation-name: b;
-            animation-name: b;
-    -webkit-animation-duration: 2s;
-            animation-duration: 2s;
-    -webkit-animation-delay: 1.7s;
-            animation-delay: 1.7s; }
+  .header__logo {
+    padding: 50px 0 0px; }
+    .header__logo .logo {
+      margin: 50px auto 0;
+      opacity: 0;
+      width: 150px;
+      height: 150px;
+      background-color: white;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
+      opacity: 0;
+      -webkit-animation-name: b;
+              animation-name: b;
+      -webkit-animation-duration: 2s;
+              animation-duration: 2s;
+      -webkit-animation-delay: 1.7s;
+              animation-delay: 1.7s; }
 
 @-webkit-keyframes b {
   from {
@@ -370,6 +372,8 @@ body {
       text-align: center;
       padding-bottom: 30px;
       color: #2c3e50; }
+    .about__info .info__text {
+      line-height: 1.72; }
   .about__photo {
     padding-top: 50px; }
     @media screen and (min-width: 1024px) {
@@ -410,40 +414,6 @@ body {
 .list__item {
   list-style-type: none; }
 
-.headline__icon {
-  width: 75px;
-  height: 75px;
-  -webkit-background-size: cover;
-          background-size: cover; }
-  .headline__icon_education {
-    -webkit-box-ordinal-group: 2;
-    -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    background-image: url(../img/education-icon.png); }
-    @media screen and (min-width: 1024px) {
-      .headline__icon_education {
-        -webkit-box-ordinal-group: 3;
-        -webkit-order: 2;
-            -ms-flex-order: 2;
-                order: 2; } }
-  .headline__icon_progress {
-    background-image: url(../img/555.png); }
-
-.headline__title {
-  color: #EC7C26; }
-  .headline__title_education {
-    -webkit-box-ordinal-group: 3;
-    -webkit-order: 2;
-        -ms-flex-order: 2;
-            order: 2; }
-    @media screen and (min-width: 1024px) {
-      .headline__title_education {
-        -webkit-box-ordinal-group: 2;
-        -webkit-order: 1;
-            -ms-flex-order: 1;
-                order: 1; } }
-
 .skills {
   padding-bottom: 100px;
   background-image: url("../img/s-skills.jpg");
@@ -455,7 +425,8 @@ body {
   .skills__descr {
     text-align: center; }
   .skills__content {
-    padding-top: 100px; }
+    padding-top: 100px;
+    line-height: 1.72; }
     @media screen and (min-width: 1024px) {
       .skills__content {
         display: -webkit-box;
@@ -469,40 +440,31 @@ body {
           -ms-flex: 1 0 50%;
               flex: 1 0 50%;
       border-right: 1px solid #DCDCDC; } }
-  @media screen and (min-width: 1024px) {
-    .skills__education .education {
-      padding-right: 20px; } }
-  .skills__education .education__headline {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
+  .skills__education .education {
+    /* &__headline {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				
+				@include large-screen {
+					justify-content: flex-end;
+				}		
+			} */ }
     @media screen and (min-width: 1024px) {
-      .skills__education .education__headline {
-        -webkit-box-pack: end;
-        -webkit-justify-content: flex-end;
-            -ms-flex-pack: end;
-                justify-content: flex-end; } }
-  .skills__education .education__list {
-    padding-top: 100px; }
-    .skills__education .education__list .list__item:first-child {
-      padding-bottom: 70px; }
-  .skills__education .education__title {
-    padding: 0 15px;
-    display: inline-block;
-    background: #2c3e50;
-    color: white; }
-  .skills__education .education__text {
-    padding: 20px 0;
-    display: inline-block; }
+      .skills__education .education {
+        padding-right: 20px; } }
+    .skills__education .education__list {
+      padding-top: 50px; }
+      .skills__education .education__list .list__item:first-child {
+        padding-bottom: 70px; }
+    .skills__education .education__title {
+      padding: 0 15px;
+      display: inline-block;
+      background: #2c3e50;
+      color: white; }
+    .skills__education .education__text {
+      padding: 20px 0;
+      display: inline-block; }
   .skills__progress {
     padding-top: 20px; }
     @media screen and (min-width: 1024px) {

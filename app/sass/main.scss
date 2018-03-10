@@ -109,7 +109,7 @@ body {
 	}
 
 	&__logo {
-		
+		padding: 50px 0 0px;
 		.logo {
 			margin: 50px auto 0;
 			opacity: 0;
@@ -413,7 +413,7 @@ body {
 			}
 
 			&__text {
-			
+				line-height: 1.72;
 			}
 		}
 	}
@@ -479,40 +479,40 @@ body {
 	}
 }
 
-.headline {
+// .headline {
 
-	&__icon {
-		width: 75px;
-		height: 75px;
-		background-size: cover;
+// 	&__icon {
+// 		width: 75px;
+// 		height: 75px;
+// 		background-size: cover;
 
-		&_education {
-			order: 1;
-			background-image: url(../img/education-icon.png);
+// 		&_education {
+// 			order: 1;
+// 			background-image: url(../img/education-icon.png);
 
-			@include large-screen {
-				order:2;
-			}
-		}
+// 			@include large-screen {
+// 				order:2;
+// 			}
+// 		}
 
-		&_progress {
-			background-image: url(../img/555.png);
-		}
-	}
+// 		&_progress {
+// 			background-image: url(../img/555.png);
+// 		}
+// 	}
 
-	&__title {
-		color: $color-add;
+// 	&__title {
+// 		color: $color-add;
 
-		&_education {
-			order: 2;
+// 		&_education {
+// 			order: 2;
 
-			@include large-screen {
-				order:1;
+// 			@include large-screen {
+// 				order:1;
 
-			}
-		}
-	}
-}
+// 			}
+// 		}
+// 	}
+// }
 
 .skills {
 	padding-bottom: 100px;
@@ -530,6 +530,7 @@ body {
 
 	&__content {
 		padding-top: 100px;
+		line-height: 1.72;
 		
 
 		@include large-screen {
@@ -550,7 +551,7 @@ body {
 				padding-right: 20px;
 			}	
 			
-			&__headline {
+			/* &__headline {
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -558,10 +559,10 @@ body {
 				@include large-screen {
 					justify-content: flex-end;
 				}		
-			}
+			} */
 
 			&__list {
-				padding-top: 100px;
+				padding-top: 50px;
 
 				.list {
 
