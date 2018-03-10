@@ -221,7 +221,7 @@ body {
 
 /* --------------------- NavBar ------------------------ */
 .nav {
-	background-color: #2c3e50;
+	background-color: $color-main;
 
 	&_fixed {
 		position: fixed;
@@ -229,7 +229,6 @@ body {
 		left: 0;
 		z-index: 999;
 		width: 100%;
-	
 	}
 
 	&__wrapper {
@@ -247,7 +246,8 @@ body {
 			position: relative;
 			line-height: 50px;
 			cursor: pointer;
-			margin-right: 30px;
+			
+
 			@include medium-screen {
 				display: none;
 			}
@@ -296,24 +296,22 @@ body {
 	}
 
 	&__list {
-		padding-right: 120px;
 		width: 100%;
 		position: absolute;
 		top: 50px;
 		left: -9999px;
 		z-index: 55;
 		transition: left 1s ease;
-
+		background-color: $color-main;
+		
 		@include medium-screen {
 			position: static;
 		}
 
 		.list {
-
 			@extend %reset;			
-			width: 100%;
 			background-color: $color-main;
-			
+	
 			@include small-screen {
 				display: block;
 			}
@@ -349,7 +347,9 @@ body {
 		
 	}
 }
+
 /* --------------------- About ------------------------- */
+
 .descr {
 	position: relative;
 	padding-bottom: 50px;
