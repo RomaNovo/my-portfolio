@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Document</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="css/font-awesome.css">
-<link rel="stylesheet" href="css/main.css">
-
+	<title>Roma Novomodniy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, 	maximum-scale=1">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-<header class="header" id="header">
+<script id="content" type="text/x-handlebars-template">
+	<header class="header" id="header">
 	<div class="header__content">
 		<div class="header__intro">
-			<div class="intro">
+			<div class="intro">			
 				<div class="intro__item">
-					<p>САЙТ - ПОРТФОЛИО</p>
+					{{#each intro-p}}
+					<p>{{p-text}}</p>
+					{{/each}}
 				</div>
 				<div class="intro__item">
-					<h1>Веб разработчика</h1>
+					{{#each intro-h1}}
+					<h1>{{h1-text}}</h1>
+					{{/each}}
 				</div>
+				
 			</div>
 		</div>
 		<div class="header__logo">
@@ -27,44 +33,62 @@
 		</div>
 		<div class="header__triangle-group">
 			<div class="triangle-group">
-				<div class="triangle-group__elem">
+				<div class="triangle-group__triangle">				
 					<div class="triangle triangle__odd">
 						<div class="triangle__desc triangle__desc_top">Html</div>
-						<div class="triangle__icon"></div>
+						<!-- <div class="triangle__icon triangle__icon_odd"></div> -->
 					</div>
 				</div>
-				<div class="triangle-group__elem">
+				<div class="triangle-group__triangle">
 					<div class="triangle triangle__even">
 						<div class="triangle__desc triangle__desc_btm">Css</div>
-						<div class="triangle__icon"></div>
+						<!-- <div class="triangle__icon triangle__icon_even"></div> -->
 					</div>
 				</div>
-				<div class="triangle-group__elem">
+				<div class="triangle-group__triangle">
 					<div class="triangle triangle__odd">
 						<div class="triangle__desc triangle__desc_top">Js</div>
-						<div class="triangle__icon"></div>
+						<!-- <div class="triangle__icon triangle__icon_odd"></div> -->
 					</div>
 				</div>
-				<div class="triangle-group__elem">
+				<div class="triangle-group__triangle">
 					<div class="triangle triangle__even">
 						<div class="triangle__desc triangle__desc_btm">Bem</div>
-						<div class="triangle__icon"></div>
+						<!-- <div class="triangle__icon triangle__icon_even"></div> -->
 					</div>
 				</div>
-				<div class="triangle-group__elem">
-					<div class="triangle triangle__odd">
+				<div class="triangle-group__triangle">
+					<div class="triangle triangle__odd ">
 						<div class="triangle__desc triangle__desc_top">Ajax</div>
-						<div class="triangle__icon"></div>
+						<!-- <div class="triangle__icon triangle__icon_odd"></div> -->
 					</div>
 				</div>
 			</div>
 		</div>		
 	</div>	
-</header> 
+</header>
 
-<nav class="nav">	
-	<div class="nav__wrapper">
-		<div class="container">
+<nav class="nav">
+	<div class="container">	
+		<div class="nav__wrapper">	
+			<div class="nav__lang">
+				<div class="lang">
+					<div class="lang__group">
+						<div class="lang__item" data-lang="uk">
+							<div class="lang__icon lang__icon_uk"></div>
+							<div class="lang__descr">USA</div>
+						</div>
+						<div class="lang__item" data-lang="ua">
+							<div class="lang__icon lang__icon_ua"></div>
+							<div class="lang__descr">UA</div>
+						</div>
+						<div class="lang__item" data-lang="ru">
+							<div class="lang__icon lang__icon_ru"></div>
+							<div class="lang__descr">RU</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="nav__burger">
 				<div class="burger">
 					<span class="burger__elem"></span>
@@ -72,93 +96,76 @@
 					<span class="burger__elem"></span>
 				</div>
 			</div>
-			<div class="nav__list">
-				<ul class="list">
-					<li class="list__item">
-						<a href="#header" class="nav__link">Home</a>
+			<div class="nav__menu">
+				
+				<ul class="menu">
+					{{#each nav-link}}
+					<li class="menu__item">
+						<a href="{{href}}" class="nav__link">{{description}}</a>
 					</li>
-					<li class="list__item">
-						<a href="#about" class="nav__link">About me</a>
-					</li>
-					<li class="list__item">
-						<a href="#skills" class="nav__link">Skills</a>
-					</li>
-					<li class="list__item">
-						<a href="#my-works" class="nav__link">Work</a>
-					</li>
-					<li class="list__item">
-						<a href="#contact" class="nav__link">Contact</a>
-					</li>
+					{{/each}}
 				</ul>
+				
 			</div>
 		</div>
 	</div>	
 </nav>
+
 <section class="about" id="about">
 	<div class="container">
 		<div class="about__wrapper">
-			<div class="about__descr descr">
-				<h1 class="descr__title">Обо мне</h1>
-				<p class="descr__text"></p>
+			{{#each about-block}}
+			<div class="about__descr descr">		
+				<h1 class="descr__title">{{about-descr}}</h1>	
 			</div>
 			<div class="about__content">
 				<div class="about__info info">
-					<h2 class="info__title">Немного о себе</h2>
-					<p class="info__text">Всем доброго времени суток, меня зовут Роман. С недавних пор занимаюсь веб разработкой. Делаю адаптивные, кроссбраузерные, динамические сайты с мобильной версией. Это гарантирует прекрасную визуализацию  и быструю скорость работы сайта на всех популярных браузерах. Отдаю предпочтение написанию нативного кода, как верстки, так и языка программирования.  Этот сайт порфолио не исключение - HTML5, CSS3, JS, AJAX, BEM, Canvas. В проэктах использую последние технологии веба, которые существуют на сегодняшний день. Постоянно обучаюсь и изучаю что то новое. Буду очень рад сотрудничеству с вами.</p>
+					<h2 class="info__title">{{info-title}}</h2>
+					<p class="info__text">{{info-text}}</p>
 				</div>
 				<div class="about__photo photo">
 					<h2 class="photo__title">Фото</h2>
-					<div class="photo__pic">
-						
-					</div>
+					<div class="photo__pic"></div>	
 				</div>
 			</div>
+			{{/each}}
 		</div>
 	</div>
 </section>
+
 <section class="skills" id="skills">
 	<div class="container">
 		<div class="skills__wrapper">
+			{{#each skills-block}}
 			<div class="skills__descr descr">
-				<h1 class="descr__title">Мои навыки</h1>
+				<h1 class="descr__title">{{skills-descr}}</h1>
 			</div>
 			<div class="skills__content">
 				<div class="skills__education">
 					<div class="education">
-						<!-- <div class="education__headline headline">
-							<div class="headline__icon headline__icon_education"></div>
-							<h2 class="headline__title headline__title_education">Образование</h2>
-						</div> -->
 						<ul class="education__list list">
+							{{#each skills-li}}
 							<li class="list__item">
-								<p class="education__title">Высшее образование</p>
-								<p class="education__text">Донецкий Национальный Университет(ДонНТУ), декабрь 2007 г. Факультет Экономики и Менеджмента(ФЭМ), специальность 'Менеджмент в организации'(МП). Квалификация - магистр.</p>
+								<p class="education__title">{{skills-title}}</p>
+								<p class="education__text">{{skills-text}}</p>
 							</li>
-							<li class="list__item">
-								<p class="education__title">Знания в Web</p>
-								<p class="education__text">Закончил курсы по специальности Front-end Deleloper. Также обучаюсь просматривая видеокурсы, читаю книги, документации, статьи, форумы. На сегодняшний день изучаю advanced js, в дальнейшем планирую изучить фреймворк Angular. В разработке использую HTML5/CSS3, JS,  методологию CSS-архитектуры BEM, препроцессор Sass, сборщик Gulp и систему контроля версий Git. </p>
-							</li>
+							{{/each}}
 						</ul>
 					</div>
 				</div>
-
 				 <div class="skills__progress">
 				 	<div class="progress">
-				 		<!-- <div class="progress__headline headline">
-				 			<div class="headline__icon headline__icon_progress"></div>
-				 			<h2 class="headline__title headline__title_progress">Навыки</h2>
-				 		</div> -->
 				 		<ul class="progress__list list">
 				 			<li class="list__item">
-				 				<canvas class='progress__canvas' data-progress="55" width="120" height="120"></canvas>
+				 				<canvas class='progress__canvas' data-progress="75" width="120" height="120"></canvas>
 				 				<div class="progress__desc">HTML</div>
 				 			</li>
 				 			<li class="list__item">
-				 				<canvas class='progress__canvas' data-progress="50" width="120" height="120"></canvas>
+				 				<canvas class='progress__canvas' data-progress="75" width="120" height="120"></canvas>
 				 				<div class="progress__desc">CSS</div>
 				 			</li>
 				 			<li class="list__item">
-				 				<canvas class='progress__canvas' data-progress="35" width="120" height="120"></canvas>
+				 				<canvas class='progress__canvas' data-progress="40" width="120" height="120"></canvas>
 				 				<div class="progress__desc">JS</div>
 				 			</li>
 				 			<li class="list__item">
@@ -166,15 +173,15 @@
 				 				<div class="progress__desc">Hendlbars</div>
 				 			</li>
 				 			<li class="list__item">
-				 				<canvas class='progress__canvas' data-progress="1" width="120" height="120"></canvas>
-				 				<div class="progress__desc">jQuery</div>
+				 				<canvas class='progress__canvas' data-progress="50" width="120" height="120"></canvas>
+				 				<div class="progress__desc">Git</div>
 				 			</li>
 				 			<li class="list__item">
-				 				<canvas class='progress__canvas' data-progress="35" width="120" height="120"></canvas>
+				 				<canvas class='progress__canvas' data-progress="50" width="120" height="120"></canvas>
 				 				<div class="progress__desc">BEM</div>
 				 			</li>
 				 			<li class="list__item">
-				 				<canvas class='progress__canvas' data-progress="25" width="120" height="120"></canvas>
+				 				<canvas class='progress__canvas' data-progress="40" width="120" height="120"></canvas>
 				 				<div class="progress__desc">Gulp</div>
 				 			</li>
 				 			<li class="list__item">
@@ -189,150 +196,131 @@
 				 	</div>			
 				</div> 
 			</div>
+			{{/each}}
 		</div>
 	</div>
 </section>
-<section class="my-works" id="my-works">
+
+<section class="section-works" id="my-works">
 	<div class="container">
-		<div class="my-works__wrapper">
-			<div class="my-works__descr descr">
-				<h1 class="descr__title">Мои работы</h1>
-				<p class="descr__text"></p>
+		<div class="section-works__wrapper">
+			{{#each my-works-block}}
+			<div class="section-works__descr descr">
+				<h1 class="descr__title">{{my-works-descr}}</h1>
 			</div>
-			<div class="my-works__gallery">
+			<div class="section-works__gallery">
 				<div class="gallery">
-					<div class="gallery__elem">
-						<div class="block block_green">
+					{{#each gallery-blocks}}
+					<div class="gallery__block">
+						<div class="block {{gallery-class}}">
+							<a href="{{href}}"  target="_blank" class="block__link"></a>	
 							<div class="block__caption"></div>
 						</div>
 					</div>
-					<div class="gallery__elem">
-						<div class="block block_summary">
-							<div class="block__caption"></div>
-						</div>
-					</div>
-					<div class="gallery__elem">
-						<div class="block block_barberi">
-							<div class="block__caption"></div>
-						</div>
-					</div>
+					{{/each}}
 				</div>
 			</div>
+			{{/each}}
 		</div>
 	</div>
 </section>
+
 <section class="contact" id="contact">	
 <div class="container">
 	<div class="contact__wrapper">
+		{{#each contact-block}}
 		<div class="contact__descr descr">
-			<h1 class="descr__title">Contact me</h1>
-			<p class="descr__text"></p>
+			<h1 class="descr__title">{{contact-descr}}</h1>
 		</div>
 		<div class="contact__address address">
+			{{#each address-blocks}}
 			<div class="address__item">
-				<span class="address__icon"><i class="fa fa-map-marker"></i></span>
-				<span class="address__text">Ukraine Kiev</span>
+				<span class="address__icon"><i class="{{i-class}}"></i></span>
+				<span class="address__text">{{address-text}}</span>
 			</div>			
-			<div class="address__item">
-				<span class="address__icon"><i class="fa fa-envelope"></i></span>
-				<span class="address__text">roma.novomodnyi@gmail.com</span>
-			</div>	
-			<div class="address__item">
-				<span class="address__icon"><i class="fa fa-mobile"></i></span>
-				<span class="address__text">+38 (050) 927 38 57</span>
-			</div>			
+			{{/each}}		
 		</div>
 		<div class="contact__form">
 			<form id="form" class="form">
-				<div class="form__title">Leave me a message</div>
+				{{#each form-descr}}
+				<div class="form__title">{{form-title}}</div>
+				{{/each}}
 				<div class="form__wrapper">
+					{{#each form-input}}
 					<div class="form__row">
 						<div class="field">
-							<div class="field__label" id="label-name">Your Name</div>
+							<div class="field__label" id="{{field-id}}">{{field-descr}}</div>
 							<div class="field__instance">
 								<div class="formField">
-									<input type="text" data-target="name" class="input" placeholder="Your Name">
+									<input type="{{input-type}}" data-target="{{data-target}}" class="input" placeholder="{{placeholder}}">
 								</div>
 							</div>
-							<span class="field__error">Введите пожалуйста имя</span>
+							<span class="field__error">{{field-error}}</span>
 						</div>
 					</div>
+					{{/each}}
+					{{#each text-area}}
 					<div class="form__row">
 						<div class="field">
-							<div class="field__label" id="label-email">Your Email</div>
+							<div class="field__label" id="label-area">{{area-descr}}</div>
 							<div class="field__instance">
 								<div class="formField">
-									<input type="email" class="input" data-target="email" placeholder="Your Email">
+									<textarea data-target="area" class="textarea" rows="4" placeholder="{{area-placeholder}}"></textarea> 
 								</div>
 							</div>
-							<span class="field__error">Введите пожалуйста майл</span>
+							<span class="field__error">{{area-error}}</span>
 						</div>
 					</div>
-					<div class="form__row">
-						<div class="field">
-							<div class="field__label" id="label-area">Message</div>
-							<div class="field__instance">
-								<div class="formField">
-									<textarea data-target="area" class="textarea" rows="4" placeholder="Message..."></textarea> 
-								</div>
-							</div>
-							<span class="field__error">Введите пожалуйста сообщение</span>
-						</div>
-					</div>
+					{{/each}}
+					{{#each form-submit}}
 					<div class="form__row">
 						<div class="field">	
 							<div class="field__instance">
 								<div class="formField">
-									<input class="submit" id="submit" type="submit" value="Send e-mail">
+									<input class="submit" id="submit" type="submit" value="{{value}}">
 								</div>
-								<span class="field__error field__error_button" id="field__error_button">Your email send</span>
+								<span class="field__error field__error_button" id="field__error_button">{{error}}</span>
 							</div>		
 						</div>
 					</div>
+					{{/each}}
 				</div>
 			</form>
 		</div>
+		{{/each}}
 	</div>
 </div>
 </section>
+
 <footer class="footer">
+	<!-- <button class="cors">send me</button>  -->
+	{{#each footer}}
 	<div class="container">
 		<div class="social-group">
 			<div class="social-group__block">
+				{{#each social-group}}		
 				<div class="soc-elem">
-					<a class="soc-elem__link soc-elem__link_google">
-						<i class="fa fa-google"></i>
+					<a href="{{link-href}}" class="soc-elem__link {{add-class}}" target="_blank">
+						<i class="{{icon-class}}" aria-hidden="true"></i>
 					</a>
-				</div>
-				<div class="soc-elem">
-					<a class="soc-elem__link soc-elem__link_facebook">
-						<i class="fa fa-facebook"></i>
-					</a>
-				</div>
-				<div class="soc-elem">
-					<a class="soc-elem__link soc-elem__link_linkedin">
-						<i class="fa fa-linkedin" aria-hidden="true"></i>
-					</a>
-				</div>
-				
-				<div class="soc-elem">
-					<a href="https://github.com/RomaNovo" class="soc-elem__link soc-elem__link_github">
-						<i class="fa fa-github" aria-hidden="true"></i>
-					</a>
-				</div>
-				<div class="soc-elem">
-					<a class="soc-elem__link soc-elem__link_skype">
-						<i class="fa fa-skype"></i>
-					</a>
-				</div>
+				</div>	
+				{{/each}}
 			</div>
 		</div>	
-		<p class="author">Copyright © 2018 Novomodniy Roman.</p>	
+		<p class="author">{{author}}</p>	
 	</div>
+	{{/each}}
 </footer>
 
-<script src="js/form.js"></script>
-<script src="js/main.js"></script>
-<script src="js/canvas.js"></script>
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+<!--  <script src="js/data.js"></script>  -->
+<script src="js/main.js" ></script>
+<!-- <script src="js/form.js"></script> -->
+
+<!-- <script src="js/canvas.js"></script> -->
+
 </body>
 </html>

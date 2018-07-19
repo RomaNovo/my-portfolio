@@ -1,0 +1,186 @@
+{
+	"intro-p" : [
+		{
+			"p-text" : "Portfolio"
+		}
+	],
+
+	"intro-h1" : [
+		{
+			"h1-text" : "Of web developer"
+		}
+	],
+
+	"nav-link" : [
+		{
+			"href" : "#header",
+			"description" : "Home"
+		},
+		{
+			"href" : "#about",
+			"description" : "About me"
+		},
+		{
+			"href" : "#skills",
+			"description" : "Skills"
+		},
+		{
+			"href" : "#my-works",
+			"description" : "Works"
+		},
+		{
+			"href" : "#contact",
+			"description" : "Contacts"
+		}
+	],
+
+	"about-block" : [
+		{
+			"about-descr" : "About me",
+			"info-title"  : "About myself",
+			"info-text"   : "Hello everyone, my name is Roman. Recently I have been doing of web development. I do adaptive, cross browshing, dynamic websites with mobile first. This guarantees is a beautiful visualization and fast speed of website on all famous browsers. I prefer to write native code, как верстки, так и языка программирования.  This site is no exception - HTML5, CSS3, JS, AJAX, BEM, Canvas. In my projects I use I'm using last web technologies,  which exist today. I constantly study and learn something new. I'am looking forward to working with you."
+		}
+	],
+
+	"skills-block" : [
+		{
+			"skills-descr" : "My skills",
+			"skills-li" : [
+				{
+					"skills-title" : "Higher education",
+					"skills-text"  : "Graduated from economical faculty of DonNTU in 2007, have a Master's degree."
+				},
+				{
+					"skills-title" : "Knowledge of Web",
+					"skills-text"  : "I took  a course Front-end Deleloper. I'am looking through video of web , reading books, documentation, articles, forums. Now I learn advanced js and plan to study framework Angular. I use HTML5/CSS3, JS, methodology CSS-architecture BEM, preprocessor Sass, assemblers Webpack,Gulp and system of version control Git."
+				}
+			]
+		}
+	],
+
+	"my-works-block" : [
+		{
+			"my-works-descr" : "My works",
+			"gallery-blocks" : [
+				{
+					"gallery-class" : "block_k-full",
+					"href" : "http://test.ifb.com.ua/"	
+				},
+				{
+					"gallery-class" : "block_pension",
+					"href" : "http://new.penscapital.com.ua/"	
+				},
+				{
+					"gallery-class" : "block_green",
+					"href" : ""	
+				},
+				{
+					"gallery-class" : "block_summary",
+					"href" : ""	
+				},
+				{
+					"gallery-class" : "block_barberi",
+					"href" : ""	
+				}
+			]
+		}
+	],
+
+	"contact-block" : [
+		{
+			"contact-descr" : "Contact me",
+			"address-blocks" : [
+				{
+					"i-class" : "fa fa-map-marker",
+					"address-text" : "Ukraine Kiev"
+				},
+
+				{
+					"i-class" : "fa fa-envelope",
+					"address-text" : "roma.novomodnyi@gmail.com"
+				},
+
+				{
+					"i-class" : "fa fa-mobile",
+					"address-text" : "+38 (050) 927 38 57"
+				}
+			],
+
+			"form-descr" : [
+				{
+					"form-title" : "Send a message"
+				}
+			],
+
+			"form-input" : [
+				{
+					"field-descr" : "Your name",
+					"field-id" : "label-name",
+					"input-type" : "text",
+					"field-error" : "Enter your name",
+					"data-target" : "name",
+					"placeholder" : "Your name"
+				},
+
+				{
+					"field-descr" : "Your email",
+					"field-id" : "label-email",
+					"input-type" : "email",
+					"field-error" : "Enter your mail",
+					"data-target" : "email",
+					"placeholder" : "Your mail"
+				}
+			],
+
+			"text-area" : [
+				{
+					"area-descr" : "Your message",
+					"area-placeholder" : "Your message...",
+					"area-error" : "Enter your message"
+				}
+			],
+
+			"form-submit" : [
+				{
+					"value" : "Send message",
+					"error" : "Your message Send"
+				}
+			]
+
+
+		}
+	],
+
+	"footer" : [
+		{
+			"author" : "Copyright © 2018 Novomodniy Roman.",
+			"social-group" : [
+				{
+					"add-class" : "soc-elem__link_google",
+					"icon-class" : "fa fa-google",
+					"link-href" : "#"
+				},
+				{
+					"add-class" : "soc-elem__link_facebook",
+					"icon-class" : "fa fa-facebook",
+					"link-href" : "#"
+				},
+				{
+					"add-class" : "soc-elem__link_linkedin",
+					"icon-class" : "fa fa-linkedin",
+					"link-href" : "#"
+				},
+				{
+					"add-class" : "soc-elem__link_github",
+					"icon-class" : "fa fa-github",
+					"link-href" : "https://github.com/RomaNovo"
+				},
+				{
+					"add-class" : "soc-elem__link_skype",
+					"icon-class" : "fa fa-skype",
+					"link-href" : "#"
+				}
+			]
+		}
+	]				
+}

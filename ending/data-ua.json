@@ -1,0 +1,186 @@
+{
+	"intro-p" : [
+		{
+			"p-text" : "Портфоліо"
+		}
+	],
+
+	"intro-h1" : [
+		{
+			"h1-text" : "Веб розробника"
+		}
+	],
+
+	"nav-link" : [
+		{
+			"href" : "#header",
+			"description" : "Головна"
+		},
+		{
+			"href" : "#about",
+			"description" : "Про мене"
+		},
+		{
+			"href" : "#skills",
+			"description" : "Навички"
+		},
+		{
+			"href" : "#my-works",
+			"description" : "Роботи"
+		},
+		{
+			"href" : "#contact",
+			"description" : "Контакти"
+		}
+	],
+
+	"about-block" : [
+		{
+			"about-descr" : "Про мене",
+			"info-title"  : "Про мене",
+			"info-text"   : "Усім доброго дня, мене звуть Роман. Віднедавно займаюсь веб розробкой. Розроблюю адатпивні, кросбраузерні, динамічні сайти з мобільною версією. Це гарантує видовищну візуалізацію та високу швидкість роботи сайту на усіх відомих браузерах. Віддаю перевагу написанню нативного коду, як верстки, так і мови програмування.  Цей сайт порфоліо не є виключенням - HTML5, CSS3, JS, AJAX, BEM, Canvas, Handlebars. У проектах використовую останні технології вебу, які існують насьогодні. Постійно підвищую свій  професійний рівень. З радістю співпрацюватиму з вами."
+		}
+	],
+
+	"skills-block" : [
+		{
+			"skills-descr" : "Навичкі",
+			"skills-li" : [
+				{
+					"skills-title" : "Вища освіта",
+					"skills-text"  : "Донецький Національний Університет(ДонНТУ), грудень 2007 г. Факультет Экономіки та Менеджменту(ФЭМ), спеціальность 'Менеджмент в организации'(МП). Кваліфікация - магістр."
+				},
+				{
+					"skills-title" : "Знання у вєб",
+					"skills-text"  : "Закінчив курси  Front-end Deleloper. Також навчаюсь дивлячись відуокурси, читаю книжки, документації, статті, форуми. Зараз вивчаю advanced js, надалі планую вивчити фреймворк Angular. У розробці використовую HTML5/CSS3, JS,  методологію CSS-архітектури BEM, препроцесор Sass, збирачі Webpack та Gulp, а також систему контролю версій Git."
+				}
+			]
+		}
+	],
+
+	"my-works-block" : [
+		{
+			"my-works-descr" : "Mої роботи",
+			"gallery-blocks" : [
+				{
+					"gallery-class" : "block_k-full",
+					"href" : "http://test.ifb.com.ua/"	
+				},
+				{
+					"gallery-class" : "block_pension",
+					"href" : "http://new.penscapital.com.ua/"	
+				},
+				{
+					"gallery-class" : "block_green",
+					"href" : ""	
+				},
+				{
+					"gallery-class" : "block_summary",
+					"href" : ""	
+				},
+				{
+					"gallery-class" : "block_barberi",
+					"href" : ""	
+				}
+			]
+		}
+	],
+
+	"contact-block" : [
+		{
+			"contact-descr" : "Зв'яжіться зі мною",
+			"address-blocks" : [
+				{
+					"i-class" : "fa fa-map-marker",
+					"address-text" : "Україна Київ"
+				},
+
+				{
+					"i-class" : "fa fa-envelope",
+					"address-text" : "roma.novomodnyi@gmail.com"
+				},
+
+				{
+					"i-class" : "fa fa-mobile",
+					"address-text" : "+38 (050) 927 38 57"
+				}
+			],
+
+			"form-descr" : [
+				{
+					"form-title" : "Відправити мені повідомлення"
+				}
+			],
+
+			"form-input" : [
+				{
+					"field-descr" : "Ваше ім'я",
+					"field-id" : "label-name",
+					"input-type" : "text",
+					"field-error" : "введіть ваше ім'я",
+					"data-target" : "name",
+					"placeholder" : "Ваше ім'я"
+				},
+
+				{
+					"field-descr" : "Ваша пошта",
+					"field-id" : "label-email",
+					"input-type" : "email",
+					"field-error" : "введіть вашу пошту",
+					"data-target" : "email",
+					"placeholder" : "Ваша пошта"
+				}
+			],
+
+			"text-area" : [
+				{
+					"area-descr" : "Ваше повідомлення",
+					"area-placeholder" : "Ваше повідомлення...",
+					"area-error" : "Введіть ваше повідомлення"
+				}
+			],
+
+			"form-submit" : [
+				{
+					"value" : "Відправити повідомлення",
+					"error" : "Ваше повідомлення відправлено"
+				}
+			]
+
+
+		}
+	],
+
+	"footer" : [
+		{
+			"author" : "Copyright © 2018 Novomodniy Roman.",
+			"social-group" : [
+				{
+					"add-class" : "soc-elem__link_google",
+					"icon-class" : "fa fa-google",
+					"link-href" : "#"
+				},
+				{
+					"add-class" : "soc-elem__link_facebook",
+					"icon-class" : "fa fa-facebook",
+					"link-href" : "#"
+				},
+				{
+					"add-class" : "soc-elem__link_linkedin",
+					"icon-class" : "fa fa-linkedin",
+					"link-href" : "#"
+				},
+				{
+					"add-class" : "soc-elem__link_github",
+					"icon-class" : "fa fa-github",
+					"link-href" : "https://github.com/RomaNovo"
+				},
+				{
+					"add-class" : "soc-elem__link_skype",
+					"icon-class" : "fa fa-skype",
+					"link-href" : "#"
+				}
+			]
+		}
+	]				
+}

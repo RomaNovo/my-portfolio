@@ -43,12 +43,12 @@ function drawCanvas(context,persent) {
 		context.stroke();
 
 		if (al >= persent) {
-				clearTimeout(sim);
-			}
-			al++;
+			clearTimeout(sim);
 		}
-		var sim = setInterval(progressSim, 15);
+			al++;
 	}
+		var sim = setInterval(progressSim, 15);
+}
 
 if (scroll + 200 > heightSkills) {
 	showCanvas();
