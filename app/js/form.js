@@ -98,3 +98,35 @@
 
 	var formBtn = document.querySelector('#submit');
 	formBtn.addEventListener('click', submitForm);
+
+	function submitForm(form) {
+	  console.log(form)
+	  var formData = new FormData();
+
+	  if (validate(form)){
+
+	    [...form.querySelectorAll('[data-id]')].forEach(item => {
+	      formData.append(item.dataset.id, item.value)
+	    });
+
+	    fetch('/trainningorder', {
+	      method: 'post',
+	      headers: {
+	        'Content-Type': 'application/x-www-form-urlencoded',
+	        'accept': 'application/json'
+	      },
+	      body: formData,
+	      credentials: 'same-origin'
+	    })
+	    .then(resp => resp.json())
+	    .then(resp => {
+	      if (typeof(resp) != 'object') resp = JSON.parse(resp);
+	      let status = resp.status;
+
+	      if(status){
+	        document.querySelector('.modalFreeLes-js').classList.remove('active');
+	        document.querySelector('.modalSuccessPassword-js').classList.add('active');
+	      }
+	    })
+	  } 
+	}
