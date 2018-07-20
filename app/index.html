@@ -252,7 +252,7 @@
 							<div class="field__label" id="{{field-id}}">{{field-descr}}</div>
 							<div class="field__instance">
 								<div class="formField">
-									<input type="{{input-type}}" data-target="{{data-target}}" class="input" placeholder="{{placeholder}}">
+									<input type="{{input-type}}" data-id={{data-id}} data-type={{data-type}} data-target="{{data-target}}" class="input" placeholder="{{placeholder}}">
 								</div>
 							</div>
 							<span class="field__error">{{field-error}}</span>
@@ -265,7 +265,7 @@
 							<div class="field__label" id="label-area">{{area-descr}}</div>
 							<div class="field__instance">
 								<div class="formField">
-									<textarea data-target="area" class="textarea" rows="4" placeholder="{{area-placeholder}}"></textarea> 
+									<textarea data-target="area" data-id={{data-id}} data-type={{data-type}} class="textarea" rows="4" placeholder="{{area-placeholder}}"></textarea> 
 								</div>
 							</div>
 							<span class="field__error">{{area-error}}</span>
@@ -273,7 +273,7 @@
 					</div>
 					{{/each}}
 					{{#each form-submit}}
-					<div class="form__row">
+					<div class="form__row submit">
 						<div class="field">	
 							<div class="field__instance">
 								<div class="formField">

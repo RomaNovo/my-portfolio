@@ -56,7 +56,7 @@
 		labelArea.style.opacity  = '0';
 	}
 
-	function submitForm(){
+	/*function submitForm(){
 		_("submit").disabled = true;
 
 		var Formdata = new FormData();
@@ -82,9 +82,9 @@
 			}
 		}
 		ajax.send(Formdata);
-	}
+	}*/
 	
-	form.addEventListener('input', function(e) {
+	/*form.addEventListener('input', function(e) {
 		var row = e.target;
 		var bibik = document.getElementById('label-' + row.dataset.target)
 		if(row.value.length > 0) {
@@ -95,11 +95,12 @@
 		}
 
 	})
-
-	var formBtn = document.querySelector('#submit');
-	formBtn.addEventListener('click', submitForm);
+*/
+	/*var formBtn = document.querySelector('#submit');
+	formBtn.addEventListener('click', submitForm);*/
 
 	function submitForm(form) {
+		alert('hi')
 	  console.log(form)
 	  var formData = new FormData();
 
@@ -109,7 +110,7 @@
 	      formData.append(item.dataset.id, item.value)
 	    });
 
-	    fetch('/trainningorder', {
+	    fetch('example_parser.php', {
 	      method: 'post',
 	      headers: {
 	        'Content-Type': 'application/x-www-form-urlencoded',
@@ -122,11 +123,44 @@
 	    .then(resp => {
 	      if (typeof(resp) != 'object') resp = JSON.parse(resp);
 	      let status = resp.status;
-
-	      if(status){
-	        document.querySelector('.modalFreeLes-js').classList.remove('active');
-	        document.querySelector('.modalSuccessPassword-js').classList.add('active');
-	      }
+	      alert(status)
 	    })
 	  } 
 	}
+
+	let validate = (form) => {
+	  let inputs = [...form.querySelectorAll('[data-type]')];
+	  let passed = true;
+	  let password;
+	  
+	  inputs.forEach((item) => {
+	    
+	    if (item.dataset.type == 'password') password = item.value;
+	    if ((types[item.dataset.type] && types[item.dataset.type].test(item.value)) || (item.value == password && item.value != '')){
+	      item.classList.remove('form__input_novalid');
+	      
+	    }
+	    else{
+	      passed = false;
+	      item.classList.add('form__input_novalid');
+	      
+	    }
+	  });
+	  return passed;
+	};
+
+	 [...document.querySelectorAll('.submit')].forEach(item => {
+
+    	item.addEventListener('click',  function(event) { 
+    		alert('ass')
+    	  event.preventDefault();
+    	  if(item.parentElement.parentElement.nodeName === 'FORM') {
+    	  	alert('ee')
+    	     submitForm(item.parentElement.parentElement)
+    	  } else if ( item.parentElement.nodeName === 'FORM' && item.previousElementSibling.classList.contains('active')) {
+    	    submitForm(item.parentElement)
+    	    alert('ese')
+    	  }    
+    	});
+  	})
+

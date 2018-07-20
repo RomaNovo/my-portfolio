@@ -119,7 +119,9 @@
 					"input-type" : "text",
 					"field-error" : "Введите пожалуйста имя",
 					"data-target" : "name",
-					"placeholder" : "Ваше имя"
+					"placeholder" : "Ваше имя",
+					"data-id" : "n",
+					"data-type" : "text"
 				},
 
 				{
@@ -128,7 +130,9 @@
 					"input-type" : "email",
 					"field-error" : "Введите пожалуйста майл",
 					"data-target" : "email",
-					"placeholder" : "Ваша почта"
+					"placeholder" : "Ваша почта",
+					"data-id" : "e",
+					"data-type" : "email"
 				}
 			],
 
@@ -136,7 +140,9 @@
 				{
 					"area-descr" : "Ваше сообщение",
 					"area-placeholder" : "Ваше сообщение...",
-					"area-error" : "Введите пожалуйста сообщение"
+					"area-error" : "Введите пожалуйста сообщение",
+					"data-id" : "m",
+					"data-type" : "text"
 				}
 			],
 
