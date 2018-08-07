@@ -6,17 +6,73 @@ function _qA(select) {
 	return document.querySelectorAll(select);
 }
 
-var content = document.getElementById('content').innerHTML;
+let _ = (events, target, func) => {
+  events.split(' ').forEach((event) => {
+    document.addEventListener(event, (e) => {
+      [...document.querySelectorAll(target)].forEach((item) => {
+        let element = e.target;
+        if (item == element)
+          return func(e, element);
+        else{
+          while(element.parentElement){
+            if (item == element){
+              return func(e, element);
+            }
+            else
+              element = element.parentElement;
+          }
+        }
+      });
+      return false;
+    });
+  });
+};
 
-	/*var x = function() {
-		
-		return function() {
-			return gg;
-		}
-	}*/
+_('input', '[data-type]', (e, el) => {
+  let input = el;
+  if (types[el.dataset.type].test(el.value)){
+    input.classList.add('valid');
+    input.classList.remove('form__input_novalid');
+  }
+  /*else input.classList.add('form__input_novalid');*/
+});
+
+
+let validate = (form) => {
+  let inputs = [...form.querySelectorAll('[data-type]')];
+  let passed = true;
+  let password;
+  
+  inputs.forEach((item) => {
+    
+    if (item.dataset.type == 'password') password = item.value;
+    if ((types[item.dataset.type] && types[item.dataset.type].test(item.value)) || (item.value == password && item.value != '')){
+      item.classList.remove('form__input_novalid');
+    }
+    else{
+      passed = false;
+      item.classList.add('form__input_novalid');
+    }
+  });
+
+  return passed;
+};
+
+[...document.querySelectorAll('.submit')].forEach(item => {
+  item.addEventListener('click',  function(event) { 
+    event.preventDefault();
+    if(item.parentElement.parentElement.nodeName === 'FORM') {
+       submitForm(item.parentElement.parentElement)
+    } else if ( item.parentElement.nodeName === 'FORM' && item.previousElementSibling.classList.contains('active')) {
+      submitForm(item.parentElement)
+    }    
+  });
+})
+
+let content = document.getElementById('content').innerHTML;
 
 function changeLang(json) {
-	var xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 	xhr.open('GET', json, false);
 	xhr.send();
 
@@ -24,23 +80,20 @@ function changeLang(json) {
 		data = JSON.parse(xhr.responseText);
 	}
 
-	 source = content;
+	source = content;
 	
-	var template = Handlebars.compile(source);
-	var html = template(data);
-	var body = document.body;
+	let template = Handlebars.compile(source);
+	let html = template(data);
+	let body = document.body;
 		body.innerHTML = html;
-	load();
+	init();
 }
 
 changeLang('data-ru.json');
 
+ function init() {
 
-
-
- function load() {
-
- 	var langItemUk = document.querySelectorAll('.lang__item')[0],
+ 	let langItemUk = document.querySelectorAll('.lang__item')[0],
  		langItemUa = document.querySelectorAll('.lang__item')[1],
  		langItemRu = document.querySelectorAll('.lang__item')[2];
  		
@@ -58,7 +111,7 @@ changeLang('data-ru.json');
  	
  	/*---------------------------- Canvas -------------------------*/
 
- 	var colCanvas    = _qA('.progress__canvas'),
+ 	let colCanvas    = _qA('.progress__canvas'),
  	 	arrCanvas    = [];
  	 	skills 	     = _q('#skills'),
  	 	heightSkills = skills.offsetTop,
@@ -71,15 +124,14 @@ changeLang('data-ru.json');
 
  	function showCanvas() {
  		colCanvas.forEach(function(v,i) {
- 			var progress = v.dataset.progress;
+ 			let progress = v.dataset.progress;
  			arrCanvas[i] = v.getContext('2d');
  			drawCanvas(arrCanvas[i], progress);
-
  		})
  	}
 
  	function drawCanvas(context,persent) {
- 		var al = 0,
+ 		let al = 0,
  			start = 4.72,
  		    cw = context.canvas.width,
  			ch = context.canvas.height,
@@ -109,18 +161,19 @@ changeLang('data-ru.json');
  			if (al >= persent) {
  				clearTimeout(sim);
  			}
- 				al++;
+
+ 			al++;
  		}
- 			var sim = setInterval(progressSim, 15);
+ 			let sim = setInterval(progressSim, 15);
  	}
 
 	if (scrollCanvas + 200 > heightSkills) {	
-	 	 		showCanvas();
-	 	 		addCount(); 	 		
+	 	 showCanvas();
+	 	 addCount(); 	 		
 	}
 
 	window.addEventListener('scroll', function() {
-	 	var scrollingCanvas = window.pageYOffset;
+	 	let scrollingCanvas = window.pageYOffset;
 	 	 
 	 	if (count > 0) {
 	 		return;
@@ -133,10 +186,10 @@ changeLang('data-ru.json');
  	
 	/*------------------ Nav Menu ------------------*/
 
-	var 
+	let
 		burger     = _q('.burger'),
 		burgerElem = _qA('.burger__elem'),
-		menuList       = _q('.nav__menu');
+		menuList   = _q('.nav__menu');
 
 
 	burger.addEventListener('click', function() {
@@ -157,7 +210,7 @@ changeLang('data-ru.json');
 
 	// ====== Logo ======
 	
-	var logo = _q('.logo');
+	let logo = _q('.logo');
 	
 	function showLogo() {
 		logo.style.opacity = '1';
@@ -169,16 +222,15 @@ changeLang('data-ru.json');
 	
 	// ======== SCROOL CONTROL ==============
 
-	var navMenu = _q('.nav'),
+	let navMenu = _q('.nav'),
 		aboutD  = _q('.about__descr'),
 		height = navMenu.offsetTop;
 
-		var scrollTop = document.documentElement.scrollTop;
+		let scrollTop = document.documentElement.scrollTop;
+
 		if( height < scrollTop) {
 			navMenu.classList.add('nav_fixed');
-		    aboutD.style.paddingTop = '68px';
-			
-			
+		    aboutD.style.paddingTop = '68px';					
 		} else if( height > scrollTop){
 			navMenu.classList.remove('nav_fixed');
 			aboutD.style.paddingTop = '0';
@@ -186,14 +238,12 @@ changeLang('data-ru.json');
 	
 
 	window.addEventListener('scroll', function() {
-		var scrollTop = document.documentElement.scrollTop;
-		
-		
+		let scrollTop = document.documentElement.scrollTop;
+				
 		if( height < scrollTop) {
 			navMenu.classList.add('nav_fixed');
 		    aboutD.style.paddingTop = '68px';
-			
-			
+					
 		} else if( height > scrollTop){
 			navMenu.classList.remove('nav_fixed');
 			aboutD.style.paddingTop = '0';
@@ -202,10 +252,11 @@ changeLang('data-ru.json');
 
 	// ========== SCROOL NAVIGATION ============
 
-	var link = document.querySelectorAll('.nav__link');
+	let link = document.querySelectorAll('.nav__link');
 
-	for(var i = 0; i < link.length; i++) {
-		var scroll, blockHeight;
+	for(let i = 0; i < link.length; i++) {
+		let scroll, blockHeight;
+
 		link[i].addEventListener('click', function() {
 			event.preventDefault();
 			scroll      = window.pageYOffset;
@@ -245,11 +296,11 @@ changeLang('data-ru.json');
 
 	/*============= WATCHING TAB =================*/
 
-	var groupTab = document.querySelectorAll('header, section');
+	let groupTab = document.querySelectorAll('header, section');
 	function watchTab(v) {
-		var scroll = window.pageYOffset;
+		let scroll = window.pageYOffset;
 		if(scroll + 100 >= v.offsetTop && scroll < v.offsetTop + v.offsetHeight - 100) {
-			var id = v.getAttribute('id');
+			let id = v.getAttribute('id');
 			document.querySelector('[href="#' + id + '"]').classList.add('nav__link_active');
 		}
 	}
@@ -269,70 +320,68 @@ changeLang('data-ru.json');
 
 
 /*------------------------- Form -----------------------*/
-function _(id){ return document.getElementById(id); }
-function _q(select) {return document.querySelector(select);}
-
-var formName = _q('.input[type=text]');
-var formEmail = _q('.input[type=email]');
-var formArea = _q('.textarea');
-var labelText = _q('#label-name');
-var labelEmail = _q('#label-email');
-var labelArea = _q('#label-area');
-var form = _q('#form');
-
-function clear() {
+	function _(id){ return document.getElementById(id); }
+	function _q(select) {return document.querySelector(select);}
+	
+	let formName = _q('.input[type=text]'),
+		formEmail = _q('.input[type=email]'),
+		formArea = _q('.textarea'),
+		labelText = _q('#label-name'),
+		labelEmail = _q('#label-email'),
+		labelArea = _q('#label-area'),
+		form = _q('#form');
+	
+	function clear() {
 		formName.value = '';
 		formEmail.value = '';
 		formArea.value = '';
 		labelText.style.opacity = '0';
 		labelEmail.style.opacity = '0';
 		labelArea.style.opacity = '0';
-}
-
-function submitForm(){
-	_("submit").disabled = true;	
-	var Formdata = new FormData();
-
-	Formdata.append( "n", _q('.input[type=text]').value );
-	Formdata.append( "e", _q('.input[type=email]').value );
-	Formdata.append( "m", _q('.textarea').value );
-	
-	var ajax = new XMLHttpRequest();
-
-	ajax.open( "POST", "example_parser.php" );
-
-	ajax.onreadystatechange = function() {
-	
-		if(ajax.readyState == 4 && ajax.status == 200) {
-						if(ajax.responseText == "success"){
-							setTimeout(function() {
-							var btnMessage = _('field__error_button');
-							btnMessage.style.display = 'block';
-							clear();	
-						}, 1000);
-							
-						}
-		}
 	}
-	ajax.send(Formdata);
-}
 
-
-form.addEventListener('input', function(e) {
-	var row = e.target;
-	var bibik = document.getElementById('label-' + row.dataset.target)
-	if(row.value.length > 0) {
+	function submitForm(){
+		_("submit").disabled = true;
+	
+		let Formdata = new FormData();
+	
+		Formdata.append( "n", _q('.input[type=text]').value );
+		Formdata.append( "e", _q('.input[type=email]').value );
+		Formdata.append( "m", _q('.textarea').value );
 		
-		bibik.style.opacity = '1';
-	} else {
-		bibik.style.opacity = '0';
+		var ajax = new XMLHttpRequest();
+	
+		ajax.open( "POST", "example_parser.php" );
+	
+		ajax.onreadystatechange = function() {
+		
+			if(ajax.readyState == 4 && ajax.status == 200) {
+				if(ajax.responseText == "success"){
+					setTimeout(function() {
+						let btnMessage = _('field__error_button');
+						btnMessage.style.display = 'block';
+						clear();	
+					}, 1000);		
+				}
+			}
+		}
+	
+		ajax.send(Formdata);
 	}
 
-})
 
-var formBtn = document.querySelector('#submit');
-formBtn.addEventListener('click', submitForm);
+	form.addEventListener('input', function(e) {
+		let row = e.target;
+		let bibik = document.getElementById('label-' + row.dataset.target)
+		if(row.value.length > 0) {	
+			bibik.style.opacity = '1';
+		} else {
+			bibik.style.opacity = '0';
+		}
+	});
 
+	let formBtn = document.querySelector('#submit');
+	formBtn.addEventListener('click', submitForm);
 };
 
 /*var cors = document.querySelector('.cors');

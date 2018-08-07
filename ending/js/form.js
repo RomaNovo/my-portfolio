@@ -2,6 +2,43 @@
 	function _(id){ return document.getElementById(id); }
 	function _q(select) {return document.querySelector(select);}
 
+	let _ = (events, target, func) => {
+	  events.split(' ').forEach((event) => {
+	    document.addEventListener(event, (e) => {
+	      [...document.querySelectorAll(target)].forEach((item) => {
+	        let element = e.target;
+	        if (item == element)
+	          return func(e, element);
+	        else{
+	          while(element.parentElement){
+	            if (item == element){
+	              return func(e, element);
+	            }
+	            else
+	              element = element.parentElement;
+	          }
+	        }
+	      });
+	      return false;
+	    });
+	  });
+	};
+
+	let types = {
+	  'email': /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+	  'phone': /^\+([0-9]|\(|\)|.)+$/,
+	  'text': /.+/,
+	}
+
+	_('input', '[data-type]', (e, el) => {
+	  let input = el;
+	  if (types[el.dataset.type].test(el.value)){
+	    input.classList.add('valid');
+	    input.classList.remove('form__input_novalid');
+	  }
+	  /*else input.classList.add('form__input_novalid');*/
+	});
+
 	var formName   = _q('.input[type=text]');
 	var formEmail  = _q('.input[type=email]');
 	var formArea   = _q('.textarea');
@@ -61,3 +98,35 @@
 
 	var formBtn = document.querySelector('#submit');
 	formBtn.addEventListener('click', submitForm);
+
+	function submitForm(form) {
+	  console.log(form)
+	  var formData = new FormData();
+
+	  if (validate(form)){
+
+	    [...form.querySelectorAll('[data-id]')].forEach(item => {
+	      formData.append(item.dataset.id, item.value)
+	    });
+
+	    fetch('/trainningorder', {
+	      method: 'post',
+	      headers: {
+	        'Content-Type': 'application/x-www-form-urlencoded',
+	        'accept': 'application/json'
+	      },
+	      body: formData,
+	      credentials: 'same-origin'
+	    })
+	    .then(resp => resp.json())
+	    .then(resp => {
+	      if (typeof(resp) != 'object') resp = JSON.parse(resp);
+	      let status = resp.status;
+
+	      if(status){
+	        document.querySelector('.modalFreeLes-js').classList.remove('active');
+	        document.querySelector('.modalSuccessPassword-js').classList.add('active');
+	      }
+	    })
+	  } 
+	}
