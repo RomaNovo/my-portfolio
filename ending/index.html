@@ -11,6 +11,14 @@
 <body>
 
 <script id="content" type="text/x-handlebars-template">
+	<div class="preloader">
+		<div class="preloader__image">
+			<div class="preloader__image--text">Roma Novomodniy</div>
+		</div>
+		<div class="preloader__overlay"></div>
+		<div class="preloader__line"></div>
+		<div class="preloader__counter">0</div> 
+	</div>
 	<header class="header" id="header">
 	<div class="header__content">
 		<div class="header__intro">
@@ -74,18 +82,12 @@
 			<div class="nav__lang">
 				<div class="lang">
 					<div class="lang__group">
-						<div class="lang__item" data-lang="uk">
-							<div class="lang__icon lang__icon_uk"></div>
-							<div class="lang__descr">USA</div>
+						{{#each lang-block}}
+						<div class="lang__item" data-lang ="{{data}}">
+							<div class="{{icon}}" ></div>
+							<div class="lang__descr">{{country}}</div>
 						</div>
-						<div class="lang__item" data-lang="ua">
-							<div class="lang__icon lang__icon_ua"></div>
-							<div class="lang__descr">UA</div>
-						</div>
-						<div class="lang__item" data-lang="ru">
-							<div class="lang__icon lang__icon_ru"></div>
-							<div class="lang__descr">RU</div>
-						</div>
+						{{/each}}
 					</div>
 				</div>
 			</div>

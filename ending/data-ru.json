@@ -34,6 +34,24 @@
 		}
 	],
 
+	"lang-block" : [
+		{
+			"data" : "uk",
+			"icon" : "lang__icon lang__icon_uk",
+			"country" : "USA"
+		},
+		{
+			"data" : "ua",
+			"icon" : "lang__icon lang__icon_ua",
+			"country" : "UA"
+		},
+		{
+			"data" : "ru",
+			"icon" : "lang__icon lang__icon_ru lang__icon_active",
+			"country" : "RUS"
+		}
+	],
+
 	"about-block" : [
 		{
 			"about-descr" : "обо мне",

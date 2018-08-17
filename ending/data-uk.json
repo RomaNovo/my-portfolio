@@ -34,11 +34,29 @@
 		}
 	],
 
+	"lang-block" : [
+		{
+			"data" : "uk",
+			"icon" : "lang__icon lang__icon_uk lang__icon_active",
+			"country" : "USA"
+		},
+		{
+			"data" : "ua",
+			"icon" : "lang__icon lang__icon_ua",
+			"country" : "UA"
+		},
+		{
+			"data" : "ru",
+			"icon" : "lang__icon lang__icon_ru",
+			"country" : "RUS"
+		}
+	],
+
 	"about-block" : [
 		{
 			"about-descr" : "About me",
 			"info-title"  : "About myself",
-			"info-text"   : "Hello everyone, my name is Roman. Recently I have been doing of web development. I do adaptive, cross browshing, dynamic websites with mobile first. This guarantees is a beautiful visualization and fast speed of website on all famous browsers. I prefer to write native code, как верстки, так и языка программирования.  This site is no exception - HTML5, CSS3, JS, AJAX, BEM, Canvas. In my projects I use I'm using last web technologies,  which exist today. I constantly study and learn something new. I'am looking forward to working with you."
+			"info-text"   : "Hello everyone, my name is Roman. Recently I have been doing of web development. I do adaptive, cross browshing, dynamic websites with mobile first. This guarantees is a beautiful visualization and fast speed of website on all famous browsers. I prefer to write native code.  This site is no exception - HTML5, CSS3, JS, AJAX, BEM, Canvas. In my projects I use last web technologies,  which exist today. I constantly study and learn something new. I'am looking forward to working with you."
 		}
 	],
 
