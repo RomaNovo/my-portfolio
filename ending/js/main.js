@@ -88,123 +88,91 @@ function changeLang(json) {
 	let html = template(data);
 	let body = document.body;
 		body.innerHTML = html;
-<<<<<<< HEAD
-	document.addEventListener('DOMContentLoaded', load);
-	
-=======
-
 	init();
->>>>>>> preloader
 }
 
 changeLang('data-ru.json');
 
 document.addEventListener('DOMContentLoaded', () => {
-
 	let promise = new Promise(function(resolve,reject) {
-		 	let preloader = document.querySelector('.preloader');
-		 	let counterHtml = preloader.querySelector('.preloader__counter');
-		 	let counterText = counterHtml.textContent || counterHtml.innerText;
-		 	let counterInt = parseInt(counterHtml.textContent || counterHtml.innerText);
-		 	let preloaderContent = preloader.querySelector('.preloader__image');
-		 	let line = preloader.querySelector('.preloader__line');
-		 	let overlay = preloader.querySelector('.preloader__overlay');
-		 	let allowed = 0;
-		 	let timer;
-		 	let triangleEven = document.querySelectorAll('.triangle__even');
-		 	let triangleOdd = document.querySelectorAll('.triangle__odd');
-		 	let logoAnimation = document.querySelector('.logo');
-		 	let delay = 4125;
-		 	let preloadCondition = 0;
-
-<<<<<<< HEAD
- function load() {
-=======
+	let preloader = document.querySelector('.preloader');
+	let counterHtml = preloader.querySelector('.preloader__counter');
+	let counterText = counterHtml.textContent || counterHtml.innerText;
+	let counterInt = parseInt(counterHtml.textContent || counterHtml.innerText);
+	let preloaderContent = preloader.querySelector('.preloader__image');
+	let line = preloader.querySelector('.preloader__line');
+	let overlay = preloader.querySelector('.preloader__overlay');
+	let allowed = 0;
+	let timer;
+	let triangleEven = document.querySelectorAll('.triangle__even');
+	let triangleOdd = document.querySelectorAll('.triangle__odd');
+	let logoAnimation = document.querySelector('.logo');
+	let delay = 4125;
+	let preloadCondition = 0;
 			
-		 	function preloaderScale() {
+	function preloaderScale() {
+	 	timer = setTimeout(function() {
+	 		preloader.style.transform = 'scale(10)';
+	 		preloader.style.opacity = '0';	
+	 	},1500);	 
+		timer = setTimeout(function() {		
+			document.body.style.overflow='visible';
+			preloader.remove();
+			resolve();		
+		},1800);
+	}
 
-		 		/*if (timer) clearTimeout(timer);*/
-		 		timer = setTimeout(function() {
-		 			preloader.style.transform = 'scale(10)';
-		 			preloader.style.opacity = '0';
-		 		},1400);
-		 	
-		 		/*if (timer) clearTimeout(timer);*/
-		 		timer = setTimeout(function() {
-				document.body.style.overflow='visible';
-		 			
-		 			/*triangleOdd.forEach( item => {
-		 				item.style.animationDelay = `${delay}ms`;
-		 			});
-		 			triangleEven.forEach( item => {
-		 				item.style.animationDelay = `${delay}ms`;
-		 			});
-		 			logoAnimation.style.animationDelay = `${delay}ms`;*/
-		 			preloader.remove();
-		 			resolve();
-		 			
-		 		},1500);
-		 	}
+	function showPic() {
+		overlay.style.transition = 'width 1.5s';
+		overlay.style.width = '0';
+		if (timer) clearTimeout(timer);
+		timer = setTimeout(function() {
+			preloader.style.backgroundColor = 'black';
+		},1500);
+		return preloaderScale();
+	}
 
-		 	function showPic() {
-		 		
-		 		overlay.style.transition = 'width 1.5s';
-		 		overlay.style.width = '0';
-		 		if (timer) clearTimeout(timer);
-		 		timer = setTimeout(function() {
-		 			preloader.style.backgroundColor = 'black';
-		 		},1500);
-		 		return preloaderScale();
-		 	}
+	function readyForPic() {
+		preloaderContent.style.opacity = '1';
+		preloader.style.backgroundColor = 'black';
+		setTimeout(function() {
+			counterHtml.style.display = 'none';
+			line.style.display = 'none';
+		}, 500);
+		return showPic();
+	}
 
-		 	function readyForPic() {
-		 		/*clearInterval(interval);*/
-		 		preloaderContent.style.opacity = '1';
-		 		preloader.style.backgroundColor = 'black';
-		 		setTimeout(function() {
-		 			counterHtml.style.display = 'none';
-		 			line.style.display = 'none';
-		 		}, 500);
-		 		return showPic();
+	function preloaderCount() {
+		counterHtml.innerText = `${counterInt++}`;
+		line.style.width = `${counterInt/10}%`;
+		console.log(line.style.width);
+		line.style.left = `${(100 - counterInt/10) / 2 + 0.8}%`;
+	}
 
-		 	}
-
-		 	function preloaderCount() {
-
-		 		counterHtml.innerText = `${counterInt++}`;
-		 		line.style.width = `${counterInt/10}%`;
-		 		console.log(line.style.width);
-		 		line.style.left = `${(100 - counterInt/10) / 2 + 0.8}%`;
-		 	}
-		 	if(preloadCondition == 0) {
-		 		document.body.style.overflow='hidden';
-		 		let interval = setInterval(function() {
-		 			counterInt <= 100 ? preloaderCount() : allowed++;
-		 			allowed === 1 ? readyForPic() : false;
-		 		}, 20);
-		 		preloadCondition++;
-		 	} else {
-		 		preloader.remove();
-		 	}
-		 	
-		 });
-		promise.then(function() {
-			changeLang('data-ru.json');
-		})
-	 	
+	if(preloadCondition == 0) {
+		document.body.style.overflow='hidden';
+		let interval = setInterval(function() {
+			counterInt <= 100 ? preloaderCount() : allowed++;
+			allowed === 1 ? readyForPic() : false;
+		}, 20);
+		preloadCondition++;
+	} else {
+		preloader.remove();
+	}	 	
+	});
+	promise.then(function() {
+		changeLang('data-ru.json');
+	})	 	
 })
 
 	
  function init() {
-let preloader = document.querySelector('.preloader');
-
-if(!condt) {
-	preloader.remove();
-}
-condt = false;
+	let preloader = document.querySelector('.preloader');
+	(!condt)? preloader.remove() : condt = false;
+	
 
 /*--------------------------- Preloader ------------------------------*/
->>>>>>> preloader
+
 
  	
  	
@@ -229,22 +197,13 @@ condt = false;
  	langGroup.addEventListener('click', (e)=> {
  		langGroup.querySelectorAll('.lang__icon').forEach( item => {
  			item.classList.remove('lang__icon_active');
- 		})
- 		console.log(e.target)
- 		/*changeLang(`data-${e.target}`);*/
- 		if( e.target.parentNode == e.currentTarget) {
- 			console.log(e.target.firstElementChild)
- 			e.target.firstElementChild.classList.add('lang__icon_active');
- 			changeLang(`data-${e.target.dataset.lang}.json`);
- 		} else {
- 			console.log(e.target.parentNode.firstElementChild)
- 			e.target.parentNode.firstElementChild.classList.add('lang__icon_active');
- 			changeLang(`data-${e.target.parentNode.dataset.lang}.json`);
- 		}
+ 		});
+ 				
+ 		( e.target.parentNode == e.currentTarget )? 
+ 			changeLang(`data-${e.target.dataset.lang}.json`) : 
+ 			changeLang(`data-${e.target.parentNode.dataset.lang}.json`);	
  	})
-
-
-    
+   
  	/*---------------------------- Canvas -------------------------*/
 
  	let colCanvas    = _qA('.progress__canvas'),
@@ -456,7 +415,7 @@ condt = false;
 
 
 /*------------------------- Form -----------------------*/
-<<<<<<< HEAD
+
 /*function _(id){ return document.getElementById(id); }
 function _q(select) {return document.querySelector(select);}
 
@@ -521,9 +480,7 @@ function clear() {
 	}
 
 
-<<<<<<< HEAD
-var formBtn = document.querySelector('#submit');
-formBtn.addEventListener('click', submitForm);
+
 */
 
 form.addEventListener('input', function(e) {
@@ -576,8 +533,7 @@ _('input', '[data-type]', (e, el) => {
   /*else input.classList.add('form__input_novalid');*/
 });
 
-var formBtn = document.querySelector('#submit');
-formBtn.addEventListener('click', submitForm);
+
 
 let validate = (form) => {
   let inputs = [...form.querySelectorAll('[data-type]')];
@@ -640,7 +596,7 @@ function submitForm(form) {
     	  }*/    
     	});
   	})
-=======
+
 	form.addEventListener('input', function(e) {
 		let row = e.target;
 		let bibik = document.getElementById('label-' + row.dataset.target)
@@ -650,7 +606,7 @@ function submitForm(form) {
 			bibik.style.opacity = '0';
 		}
 	});
->>>>>>> preloader
+
 
 	let formBtn = document.querySelector('#submit');
 	formBtn.addEventListener('click', submitForm);
