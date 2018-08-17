@@ -428,17 +428,9 @@ body {
   -webkit-filter: saturate(0.5);
           filter: saturate(0.5); }
   .lang__item:hover {
-<<<<<<< HEAD
-    -webkit-transform: scale(1.3);
-        -ms-transform: scale(1.3);
-            transform: scale(1.3);
-    -webkit-filter: saturate(1);
-            filter: saturate(1); }
-=======
     -webkit-transform: scale(1.2);
         -ms-transform: scale(1.2);
             transform: scale(1.2); }
->>>>>>> preloader
 
 .lang__icon {
   width: 35px;

@@ -88,13 +88,7 @@ function changeLang(json) {
 	let html = template(data);
 	let body = document.body;
 		body.innerHTML = html;
-<<<<<<< HEAD
-	document.addEventListener('DOMContentLoaded', load);
-	
-=======
-
 	init();
->>>>>>> preloader
 }
 
 changeLang('data-ru.json');
@@ -117,9 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		 	let delay = 4125;
 		 	let preloadCondition = 0;
 
-<<<<<<< HEAD
- function load() {
-=======
+
 			
 		 	function preloaderScale() {
 
@@ -204,7 +196,7 @@ if(!condt) {
 condt = false;
 
 /*--------------------------- Preloader ------------------------------*/
->>>>>>> preloader
+
 
  	
  	
@@ -456,7 +448,7 @@ condt = false;
 
 
 /*------------------------- Form -----------------------*/
-<<<<<<< HEAD
+
 /*function _(id){ return document.getElementById(id); }
 function _q(select) {return document.querySelector(select);}
 
@@ -640,7 +632,7 @@ function submitForm(form) {
     	  }*/    
     	});
   	})
-=======
+
 	form.addEventListener('input', function(e) {
 		let row = e.target;
 		let bibik = document.getElementById('label-' + row.dataset.target)
@@ -650,7 +642,7 @@ function submitForm(form) {
 			bibik.style.opacity = '0';
 		}
 	});
->>>>>>> preloader
+
 
 	let formBtn = document.querySelector('#submit');
 	formBtn.addEventListener('click', submitForm);
