@@ -6,6 +6,7 @@ function _qA(select) {
 	return document.querySelectorAll(select);
 }
 
+let condt = true; 
 let _ = (events, target, func) => {
   events.split(' ').forEach((event) => {
     document.addEventListener(event, (e) => {
@@ -69,6 +70,7 @@ let validate = (form) => {
   });
 })
 
+
 let content = document.getElementById('content').innerHTML;
 
 function changeLang(json) {
@@ -86,14 +88,119 @@ function changeLang(json) {
 	let html = template(data);
 	let body = document.body;
 		body.innerHTML = html;
+
 	init();
 }
 
 changeLang('data-ru.json');
 
- function init() {
+document.addEventListener('DOMContentLoaded', () => {
 
- 	let langItemUk = document.querySelectorAll('.lang__item')[0],
+	let promise = new Promise(function(resolve,reject) {
+		 	let preloader = document.querySelector('.preloader');
+		 	let counterHtml = preloader.querySelector('.preloader__counter');
+		 	let counterText = counterHtml.textContent || counterHtml.innerText;
+		 	let counterInt = parseInt(counterHtml.textContent || counterHtml.innerText);
+		 	let preloaderContent = preloader.querySelector('.preloader__image');
+		 	let line = preloader.querySelector('.preloader__line');
+		 	let overlay = preloader.querySelector('.preloader__overlay');
+		 	let allowed = 0;
+		 	let timer;
+		 	let triangleEven = document.querySelectorAll('.triangle__even');
+		 	let triangleOdd = document.querySelectorAll('.triangle__odd');
+		 	let logoAnimation = document.querySelector('.logo');
+		 	let delay = 4125;
+		 	let preloadCondition = 0;
+
+			
+		 	function preloaderScale() {
+
+		 		/*if (timer) clearTimeout(timer);*/
+		 		timer = setTimeout(function() {
+		 			preloader.style.transform = 'scale(10)';
+		 			preloader.style.opacity = '0';
+		 		},1400);
+		 	
+		 		/*if (timer) clearTimeout(timer);*/
+		 		timer = setTimeout(function() {
+				document.body.style.overflow='visible';
+		 			
+		 			/*triangleOdd.forEach( item => {
+		 				item.style.animationDelay = `${delay}ms`;
+		 			});
+		 			triangleEven.forEach( item => {
+		 				item.style.animationDelay = `${delay}ms`;
+		 			});
+		 			logoAnimation.style.animationDelay = `${delay}ms`;*/
+		 			preloader.remove();
+		 			resolve();
+		 			
+		 		},1500);
+		 	}
+
+		 	function showPic() {
+		 		
+		 		overlay.style.transition = 'width 1.5s';
+		 		overlay.style.width = '0';
+		 		if (timer) clearTimeout(timer);
+		 		timer = setTimeout(function() {
+		 			preloader.style.backgroundColor = 'black';
+		 		},1500);
+		 		return preloaderScale();
+		 	}
+
+		 	function readyForPic() {
+		 		/*clearInterval(interval);*/
+		 		preloaderContent.style.opacity = '1';
+		 		preloader.style.backgroundColor = 'black';
+		 		setTimeout(function() {
+		 			counterHtml.style.display = 'none';
+		 			line.style.display = 'none';
+		 		}, 500);
+		 		return showPic();
+
+		 	}
+
+		 	function preloaderCount() {
+
+		 		counterHtml.innerText = `${counterInt++}`;
+		 		line.style.width = `${counterInt/10}%`;
+		 		console.log(line.style.width);
+		 		line.style.left = `${(100 - counterInt/10) / 2 + 0.8}%`;
+		 	}
+		 	if(preloadCondition == 0) {
+		 		document.body.style.overflow='hidden';
+		 		let interval = setInterval(function() {
+		 			counterInt <= 100 ? preloaderCount() : allowed++;
+		 			allowed === 1 ? readyForPic() : false;
+		 		}, 20);
+		 		preloadCondition++;
+		 	} else {
+		 		preloader.remove();
+		 	}
+		 	
+		 });
+		promise.then(function() {
+			changeLang('data-ru.json');
+		})
+	 	
+})
+
+	
+ function init() {
+let preloader = document.querySelector('.preloader');
+
+if(!condt) {
+	preloader.remove();
+}
+condt = false;
+
+/*--------------------------- Preloader ------------------------------*/
+
+ 	
+ 	
+/*----------------------- Preloader END -----------------------*/	
+ 	/*let langItemUk = document.querySelectorAll('.lang__item')[0],
  		langItemUa = document.querySelectorAll('.lang__item')[1],
  		langItemRu = document.querySelectorAll('.lang__item')[2];
  		
@@ -107,8 +214,28 @@ changeLang('data-ru.json');
 
  	langItemUa.addEventListener('click', function() {
  		 changeLang('data-ua.json');
- 	});
- 	
+ 	});*/
+
+ 	let langGroup = _q('.lang__group');
+ 	langGroup.addEventListener('click', (e)=> {
+ 		langGroup.querySelectorAll('.lang__icon').forEach( item => {
+ 			item.classList.remove('lang__icon_active');
+ 		})
+ 		console.log(e.target)
+ 		/*changeLang(`data-${e.target}`);*/
+ 		if( e.target.parentNode == e.currentTarget) {
+ 			console.log(e.target.firstElementChild)
+ 			e.target.firstElementChild.classList.add('lang__icon_active');
+ 			changeLang(`data-${e.target.dataset.lang}.json`);
+ 		} else {
+ 			console.log(e.target.parentNode.firstElementChild)
+ 			e.target.parentNode.firstElementChild.classList.add('lang__icon_active');
+ 			changeLang(`data-${e.target.parentNode.dataset.lang}.json`);
+ 		}
+ 	})
+
+
+    
  	/*---------------------------- Canvas -------------------------*/
 
  	let colCanvas    = _qA('.progress__canvas'),
@@ -271,7 +398,7 @@ changeLang('data-ru.json');
 			function my_scrollDown() {
 	 			if(scroll	< blockHeight) {
 	 				window.scrollTo(blockHeight, scroll);
-					scroll = scroll + 50;
+					scroll = scroll + 20;
 					timer = setTimeout(my_scrollDown, 5);
 	 			}
 	 			else {
@@ -283,7 +410,7 @@ changeLang('data-ru.json');
 	 		function my_scrollUp() {
 	 			if(scroll > blockHeight) {
 	 				window.scrollTo(blockHeight, scroll );
-					scroll = scroll - 50;
+					scroll = scroll - 20;
 					timer = setTimeout(my_scrollUp, 5);
 	 			}
 	 			else {
