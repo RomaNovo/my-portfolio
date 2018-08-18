@@ -93,6 +93,7 @@ function changeLang(json) {
 
 changeLang('data-ru.json');
 
+/*--------------------------- Preloader ------------------------------*/
 document.addEventListener('DOMContentLoaded', () => {
 	let promise = new Promise(function(resolve,reject) {
 	let preloader = document.querySelector('.preloader');
@@ -163,36 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	promise.then(function() {
 		changeLang('data-ru.json');
 	})	 	
-})
-
+})	
+/*----------------------- Preloader END -----------------------*/	
 	
  function init() {
 	let preloader = document.querySelector('.preloader');
 	(!condt)? preloader.remove() : condt = false;
 	
-
-/*--------------------------- Preloader ------------------------------*/
-
-
- 	
- 	
-/*----------------------- Preloader END -----------------------*/	
- 	/*let langItemUk = document.querySelectorAll('.lang__item')[0],
- 		langItemUa = document.querySelectorAll('.lang__item')[1],
- 		langItemRu = document.querySelectorAll('.lang__item')[2];
- 		
- 	langItemUk.addEventListener('click', function() {
- 		 changeLang('data-uk.json');
- 	});
-
- 	langItemRu.addEventListener('click', function() {
- 		 changeLang('data-ru.json');
- 	});
-
- 	langItemUa.addEventListener('click', function() {
- 		 changeLang('data-ua.json');
- 	});*/
-
+	/*------------------- Change language --------------------------*/
  	let langGroup = _q('.lang__group');
  	langGroup.addEventListener('click', (e)=> {
  		langGroup.querySelectorAll('.lang__icon').forEach( item => {
@@ -203,7 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
  			changeLang(`data-${e.target.dataset.lang}.json`) : 
  			changeLang(`data-${e.target.parentNode.dataset.lang}.json`);	
  	})
-   
+   /*-------------------- Change language --------------------------*/
+
  	/*---------------------------- Canvas -------------------------*/
 
  	let colCanvas    = _qA('.progress__canvas'),
@@ -612,36 +592,6 @@ function submitForm(form) {
 	formBtn.addEventListener('click', submitForm);
 };
 
-/*var cors = document.querySelector('.cors');
-
-cors.addEventListener('click', function() {
-	var xdr = new XDomainRequest();
-	xdr.onload = function() {
-		var result = xdr.responseText;
-		console.log(result);
-	}
-	xdr.open("GET", "http://klavogonki.ru/");
-	xdr.send(null);
-});*/
-
-/*var cors = document.querySelector('.cors');
-cors.addEventListener('click', function() {
-	
-	var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-	var request = new XHR();
-
-	request.open("GET", "http://klavogonki.ru/",true);
-        request.setRequestHeader("X-Uid", "123");
-        request.setRequestHeader("X-Authorization", "2c9de507f2c54aa1");
-        request.setRequestHeader("Access-Control-Expose-Headers", "X-Uid");
-            request.onload = function() {
-               alert('hi');
-              var result =  this.responseText;
-              console.log(result);
-            }	
-	
-	request.send();
-})*/
 
 
 

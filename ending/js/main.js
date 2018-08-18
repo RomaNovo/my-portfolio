@@ -93,24 +93,24 @@ function changeLang(json) {
 
 changeLang('data-ru.json');
 
+/*--------------------------- Preloader ------------------------------*/
 document.addEventListener('DOMContentLoaded', () => {
 	let promise = new Promise(function(resolve,reject) {
-
-		let preloader = document.querySelector('.preloader');
-		let counterHtml = preloader.querySelector('.preloader__counter');
-		let counterText = counterHtml.textContent || counterHtml.innerText;
-		let counterInt = parseInt(counterHtml.textContent || counterHtml.innerText);
-		let preloaderContent = preloader.querySelector('.preloader__image');
-		let line = preloader.querySelector('.preloader__line');
-		let overlay = preloader.querySelector('.preloader__overlay');
-		let allowed = 0;
-		let timer;
-		let triangleEven = document.querySelectorAll('.triangle__even');
-		let triangleOdd = document.querySelectorAll('.triangle__odd');
-		let logoAnimation = document.querySelector('.logo');
-		let delay = 4125;
-		let preloadCondition = 0;
-				
+	let preloader = document.querySelector('.preloader');
+	let counterHtml = preloader.querySelector('.preloader__counter');
+	let counterText = counterHtml.textContent || counterHtml.innerText;
+	let counterInt = parseInt(counterHtml.textContent || counterHtml.innerText);
+	let preloaderContent = preloader.querySelector('.preloader__image');
+	let line = preloader.querySelector('.preloader__line');
+	let overlay = preloader.querySelector('.preloader__overlay');
+	let allowed = 0;
+	let timer;
+	let triangleEven = document.querySelectorAll('.triangle__even');
+	let triangleOdd = document.querySelectorAll('.triangle__odd');
+	let logoAnimation = document.querySelector('.logo');
+	let delay = 4125;
+	let preloadCondition = 0;
+			
 	function preloaderScale() {
 	 	timer = setTimeout(function() {
 	 		preloader.style.transform = 'scale(10)';
@@ -164,36 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	promise.then(function() {
 		changeLang('data-ru.json');
 	})	 	
-})
-
+})	
+/*----------------------- Preloader END -----------------------*/	
 	
  function init() {
 	let preloader = document.querySelector('.preloader');
 	(!condt)? preloader.remove() : condt = false;
 	
-
-/*--------------------------- Preloader ------------------------------*/
-
-
- 	
- 	
-/*----------------------- Preloader END -----------------------*/	
- 	/*let langItemUk = document.querySelectorAll('.lang__item')[0],
- 		langItemUa = document.querySelectorAll('.lang__item')[1],
- 		langItemRu = document.querySelectorAll('.lang__item')[2];
- 		
- 	langItemUk.addEventListener('click', function() {
- 		 changeLang('data-uk.json');
- 	});
-
- 	langItemRu.addEventListener('click', function() {
- 		 changeLang('data-ru.json');
- 	});
-
- 	langItemUa.addEventListener('click', function() {
- 		 changeLang('data-ua.json');
- 	});*/
-
+	/*------------------- Change language --------------------------*/
  	let langGroup = _q('.lang__group');
  	langGroup.addEventListener('click', (e)=> {
  		langGroup.querySelectorAll('.lang__icon').forEach( item => {
@@ -204,7 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
  			changeLang(`data-${e.target.dataset.lang}.json`) : 
  			changeLang(`data-${e.target.parentNode.dataset.lang}.json`);	
  	})
-   
+   /*-------------------- Change language --------------------------*/
+
  	/*---------------------------- Canvas -------------------------*/
 
  	let colCanvas    = _qA('.progress__canvas'),
@@ -613,36 +592,6 @@ function submitForm(form) {
 	formBtn.addEventListener('click', submitForm);
 };
 
-/*var cors = document.querySelector('.cors');
-
-cors.addEventListener('click', function() {
-	var xdr = new XDomainRequest();
-	xdr.onload = function() {
-		var result = xdr.responseText;
-		console.log(result);
-	}
-	xdr.open("GET", "http://klavogonki.ru/");
-	xdr.send(null);
-});*/
-
-/*var cors = document.querySelector('.cors');
-cors.addEventListener('click', function() {
-	
-	var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-	var request = new XHR();
-
-	request.open("GET", "http://klavogonki.ru/",true);
-        request.setRequestHeader("X-Uid", "123");
-        request.setRequestHeader("X-Authorization", "2c9de507f2c54aa1");
-        request.setRequestHeader("Access-Control-Expose-Headers", "X-Uid");
-            request.onload = function() {
-               alert('hi');
-              var result =  this.responseText;
-              console.log(result);
-            }	
-	
-	request.send();
-})*/
 
 
 

@@ -475,7 +475,6 @@ body {
     -webkit-flex: 0 1 100px;
         -ms-flex: 0 1 100px;
             flex: 0 1 100px;
-    padding: 25px 0;
     position: relative;
     list-style-type: none;
     -webkit-transition: all .5s;
@@ -493,6 +492,7 @@ body {
     z-index: 999;
     width: 100%; }
   .nav__wrapper {
+    padding: 20px 0;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
