@@ -522,12 +522,14 @@ body {
       display: -ms-flexbox;
       display: flex; } }
   .menu__item {
-    margin-right: 20px;
     position: relative;
     list-style-type: none;
     -webkit-transition: all .5s;
     -o-transition: all .5s;
     transition: all .5s; }
+    @media screen and (min-width: 768px) {
+      .menu__item {
+        margin-right: 20px; } }
 
 /* ==================== Components for NavBar End =========== */
 /* -------------------------- NavBar ------------------------ */
@@ -584,6 +586,7 @@ body {
             justify-content: flex-end; }
   .nav__menu {
     padding: 10px 0;
+    width: 100%;
     position: absolute;
     top: 50px;
     left: -1999px;
@@ -595,6 +598,7 @@ body {
     border-top: 1px solid white; }
     @media screen and (min-width: 768px) {
       .nav__menu {
+        width: auto;
         position: static;
         border-top: none; } }
   .nav__link {
