@@ -295,21 +295,24 @@
 </section>
 
 <footer class="footer">
-	<!-- <button class="cors">send me</button>  -->
 	{{#each footer}}
 	<div class="container">
-		<div class="social-group">
-			<div class="social-group__block">
-				{{#each social-group}}		
-				<div class="soc-elem">
-					<a href="{{link-href}}" class="soc-elem__link {{add-class}}" target="_blank">
-						<i class="{{icon-class}}" aria-hidden="true"></i>
-					</a>
-				</div>	
-				{{/each}}
+		<div class="footer__wrapper">
+			<div class="footer__social-group">
+				<div class="social-group">
+					<div class="social-group__block">
+						{{#each social-group}}		
+						<div class="soc-elem">
+							<a href="{{link-href}}" class="soc-elem__link {{add-class}}" target="_blank">
+								<i class="{{icon-class}}" aria-hidden="true"></i>
+							</a>
+						</div>	
+						{{/each}}
+					</div>
+				</div>
 			</div>
-		</div>	
-		<p class="author">{{author}}</p>	
+			<p class="footer__author">{{author}}</p>
+		</div>
 	</div>
 	{{/each}}
 </footer>

@@ -166,7 +166,7 @@
 
 			"form-submit" : [
 				{
-					"value" : "Send message",
+					"value" : "Send",
 					"error" : "Your message Send"
 				}
 			]

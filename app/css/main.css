@@ -292,7 +292,7 @@
               transform: rotate(135deg); }
 
 .social-group {
-  padding-top: 20px; }
+  padding: 15px 0; }
 
 .soc-elem__link, .soc-elem__link:before, .soc-elem__link .fa {
   -webkit-transition: all 0.35s;
@@ -303,13 +303,12 @@
           transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59); }
 
 .social-group__block {
-  padding: 10px;
   font-size: 0;
   text-align: center;
   margin: 0 auto; }
 
 .soc-elem {
-  margin: 0 20px;
+  margin: 0 7px;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -323,6 +322,9 @@
   opacity: 0.99;
   -webkit-box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
           box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1); }
+  @media screen and (min-width: 420px) {
+    .soc-elem {
+      margin: 0 15px; } }
   .soc-elem .soc-elem__link:focus:before,
   .soc-elem .soc-elem__link:hover:before {
     top: -10%;
@@ -372,6 +374,36 @@
         color: #28a745; }
       .soc-elem__link .fa-skype {
         color: #00aff0; }
+
+::-webkit-scrollbar-button {
+  background-image: url("");
+  background-repeat: no-repeat;
+  width: 6px;
+  height: 0px; }
+
+::-webkit-scrollbar-track {
+  background-color: #32312e;
+  -webkit-box-shadow: 0px 0px 3px #000 inset;
+          box-shadow: 0px 0px 3px #000 inset; }
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #EC7C26;
+  -webkit-box-shadow: 0px 1px 1px #fff inset;
+          box-shadow: 0px 1px 1px #fff inset;
+  background-image: url("https://yraaa.ru/_pu/24/59610063.png");
+  background-position: center;
+  background-repeat: no-repeat; }
+
+::-webkit-resizer {
+  background-image: url("");
+  background-repeat: no-repeat;
+  width: 7px;
+  height: 0px; }
+
+::-webkit-scrollbar {
+  width: 11px; }
 
 @font-face {
   font-family: 'Roboto-Regular';
@@ -870,7 +902,8 @@ body {
           -ms-flex-align: start;
               align-items: flex-start; } }
   .gallery__block {
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 200px; }
     .gallery__block:not(:last-child) {
       margin-bottom: 50px; }
@@ -1014,7 +1047,6 @@ body {
   .contact__descr {
     color: #fff; }
   .contact__address {
-    margin: 100px 40px 0;
     padding-bottom: 20px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1026,6 +1058,9 @@ body {
         -ms-flex-flow: column;
             flex-flow: column;
     border-bottom: 1px solid white; }
+    @media screen and (min-width: 420px) {
+      .contact__address {
+        margin: 50px 40px 0; } }
     @media screen and (min-width: 1024px) {
       .contact__address {
         -webkit-box-orient: horizontal;
@@ -1245,52 +1280,54 @@ body {
               color: #EC7C26; }
           .contact__form .form__row .field__error {
             padding: 5px 20px 0;
-            display: block;
+            display: none;
             text-align: right;
             color: #E87E04; }
             .contact__form .form__row .field__error_button {
+              margin-top: 10px;
+              padding: 5px;
               text-align: center;
               background: #E87E04;
-              padding: 5px;
               color: white;
-              margin-top: 10px;
               border: 1px solid #444; }
 
 .footer {
-  background-color: #2c3e50;
-  padding: 20px 0; }
-  .footer .author {
+  background-color: #2c3e50; }
+  @media screen and (min-width: 768px) {
+    .footer__wrapper {
+      padding: 5px 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between; } }
+  @media screen and (min-width: 768px) {
+    .footer__social-group {
+      -webkit-box-ordinal-group: 3;
+      -webkit-order: 2;
+          -ms-flex-order: 2;
+              order: 2; } }
+  .footer__author {
+    margin: 0 auto;
+    padding-bottom: 10px;
+    max-width: 200px;
     text-align: center;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 20px; }
-
-::-webkit-scrollbar-button {
-  background-image: url("");
-  background-repeat: no-repeat;
-  width: 6px;
-  height: 0px; }
-
-::-webkit-scrollbar-track {
-  background-color: #32312e;
-  -webkit-box-shadow: 0px 0px 3px #000 inset;
-          box-shadow: 0px 0px 3px #000 inset; }
-
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #EC7C26;
-  -webkit-box-shadow: 0px 1px 1px #fff inset;
-          box-shadow: 0px 1px 1px #fff inset;
-  background-image: url("https://yraaa.ru/_pu/24/59610063.png");
-  background-position: center;
-  background-repeat: no-repeat; }
-
-::-webkit-resizer {
-  background-image: url("");
-  background-repeat: no-repeat;
-  width: 7px;
-  height: 0px; }
-
-::-webkit-scrollbar {
-  width: 11px; }
+    color: white; }
+    @media screen and (min-width: 420px) {
+      .footer__author {
+        max-width: none; } }
+    @media screen and (min-width: 768px) {
+      .footer__author {
+        margin: 0;
+        -webkit-box-ordinal-group: 1;
+        -webkit-order: 0;
+            -ms-flex-order: 0;
+                order: 0;
+        text-align: start; } }
