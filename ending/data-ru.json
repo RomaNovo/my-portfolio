@@ -138,7 +138,7 @@
 					"field-error" : "Введите пожалуйста имя",
 					"data-target" : "name",
 					"placeholder" : "Ваше имя",
-					"data-id" : "n",
+					"data-id" : "name",
 					"data-type" : "text"
 				},
 
@@ -149,7 +149,7 @@
 					"field-error" : "Введите пожалуйста майл",
 					"data-target" : "email",
 					"placeholder" : "Ваша почта",
-					"data-id" : "e",
+					"data-id" : "email",
 					"data-type" : "email"
 				}
 			],
@@ -159,7 +159,7 @@
 					"area-descr" : "Ваше сообщение",
 					"area-placeholder" : "Ваше сообщение...",
 					"area-error" : "Введите пожалуйста сообщение",
-					"data-id" : "m",
+					"data-id" : "message",
 					"data-type" : "text"
 				}
 			],

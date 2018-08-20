@@ -137,7 +137,9 @@
 					"input-type" : "text",
 					"field-error" : "Enter your name",
 					"data-target" : "name",
-					"placeholder" : "Your name"
+					"placeholder" : "Your name",
+					"data-id" : "name",
+					"data-type" : "text"
 				},
 
 				{
@@ -146,7 +148,9 @@
 					"input-type" : "email",
 					"field-error" : "Enter your mail",
 					"data-target" : "email",
-					"placeholder" : "Your mail"
+					"placeholder" : "Your mail",
+					"data-id" : "email",
+					"data-type" : "email"
 				}
 			],
 
@@ -154,7 +158,9 @@
 				{
 					"area-descr" : "Your message",
 					"area-placeholder" : "Your message...",
-					"area-error" : "Enter your message"
+					"area-error" : "Enter your message",
+					"data-id" : "message",
+					"data-type" : "text"
 				}
 			],
 

@@ -1,0 +1,59 @@
+.lang {
+
+	&__group {
+		display: flex;		
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		padding-right: 7px;
+		transition: transform .5s;
+		
+		&:hover {
+			transform: scale(1.2) translateY(-30%);
+		}
+
+		&:hover .lang__icon {
+			filter: grayscale(0);
+		}
+
+		@include small-screen() {
+			padding-right: 15px;
+		}
+	}
+
+	&__icon {
+		width: 35px;
+		height: 20px;
+		margin-right: 5px;
+		background-size: cover;
+		background-position: center;
+		filter: grayscale(.9);
+
+		&_active {
+			filter: grayscale(0);
+		}
+
+		&:hover {
+			filter: grayscale(0);
+		}
+
+		&_ua {
+			background-image: url(../img/ua.png);
+		}
+
+		&_uk {
+			background-image: url(../img/usa.png);
+		}
+
+		&_ru {
+			background-image: url(../img/ru.png);
+		}
+	}
+
+	&__descr {
+		color: #fff;
+	}
+}

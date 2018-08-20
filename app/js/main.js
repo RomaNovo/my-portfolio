@@ -7,69 +7,6 @@ function _qA(select) {
 }
 
 let condt = true; 
-let _ = (events, target, func) => {
-  events.split(' ').forEach((event) => {
-    document.addEventListener(event, (e) => {
-      [...document.querySelectorAll(target)].forEach((item) => {
-        let element = e.target;
-        if (item == element)
-          return func(e, element);
-        else{
-          while(element.parentElement){
-            if (item == element){
-              return func(e, element);
-            }
-            else
-              element = element.parentElement;
-          }
-        }
-      });
-      return false;
-    });
-  });
-};
-
-_('input', '[data-type]', (e, el) => {
-  let input = el;
-  if (types[el.dataset.type].test(el.value)){
-    input.classList.add('valid');
-    input.classList.remove('form__input_novalid');
-  }
-  /*else input.classList.add('form__input_novalid');*/
-});
-
-
-let validate = (form) => {
-  let inputs = [...form.querySelectorAll('[data-type]')];
-  let passed = true;
-  let password;
-  
-  inputs.forEach((item) => {
-    
-    if (item.dataset.type == 'password') password = item.value;
-    if ((types[item.dataset.type] && types[item.dataset.type].test(item.value)) || (item.value == password && item.value != '')){
-      item.classList.remove('form__input_novalid');
-    }
-    else{
-      passed = false;
-      item.classList.add('form__input_novalid');
-    }
-  });
-
-  return passed;
-};
-
-[...document.querySelectorAll('.submit')].forEach(item => {
-  item.addEventListener('click',  function(event) { 
-    event.preventDefault();
-    if(item.parentElement.parentElement.nodeName === 'FORM') {
-       submitForm(item.parentElement.parentElement)
-    } else if ( item.parentElement.nodeName === 'FORM' && item.previousElementSibling.classList.contains('active')) {
-      submitForm(item.parentElement)
-    }    
-  });
-})
-
 
 let content = document.getElementById('content').innerHTML;
 
@@ -114,13 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	function preloaderScale() {
 	 	timer = setTimeout(function() {
 	 		preloader.style.transform = 'scale(10)';
-	 		preloader.style.opacity = '0';	
+	 		preloader.style.opacity = '0';
+
 	 	},1500);	 
-		timer = setTimeout(function() {		
-			document.body.style.overflow='visible';
+		timer = setTimeout(function() {	
 			preloader.remove();
-			resolve();		
+			document.body.style.overflow='visible';
+	 		resolve();			
 		},1800);
+
 	}
 
 	function showPic() {
@@ -146,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	function preloaderCount() {
 		counterHtml.innerText = `${counterInt++}`;
 		line.style.width = `${counterInt/10}%`;
-		console.log(line.style.width);
 		line.style.left = `${(100 - counterInt/10) / 2 + 0.8}%`;
 	}
 
@@ -165,13 +103,116 @@ document.addEventListener('DOMContentLoaded', () => {
 		changeLang('data-ru.json');
 	})	 	
 })	
-/*----------------------- Preloader END -----------------------*/	
+	/*----------------------- Preloader END -----------------------*/	
 	
  function init() {
 	let preloader = document.querySelector('.preloader');
 	(!condt)? preloader.remove() : condt = false;
+
 	
-	/*------------------- Change language --------------------------*/
+
+ 	let _ = (events, target, func) => {
+ 	  events.split(' ').forEach((event) => {
+ 	    document.addEventListener(event, (e) => {
+ 	      [...document.querySelectorAll(target)].forEach((item) => {
+ 	        let element = e.target;
+ 	        if (item == element)
+ 	          return func(e, element);
+ 	        else{
+ 	          while(element.parentElement){
+ 	            if (item == element){
+ 	              return func(e, element);
+ 	            }
+ 	            else
+ 	              element = element.parentElement;
+ 	          }
+ 	        }
+ 	      });
+ 	      return false;
+ 	    });
+ 	  });
+ 	};
+
+ 	let types = {
+ 	  'email': /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+ 	  'phone': /^\+([0-9]|\(|\)|.)+$/,
+ 	  'text': /.+/,
+ 	}
+
+ 	let validate = (form) => {
+ 	  let inputs = [...form.querySelectorAll('[data-type]')];
+ 	  let passed = true;
+ 	  
+ 	  inputs.forEach((item) => {
+ 	    
+ 	    if (types[item.dataset.type] && types[item.dataset.type].test(item.value)) {
+ 	      item.classList.remove(`${item.nodeName.toLowerCase()}_novalid`);
+ 	    }
+ 	    else{
+ 	      passed = false;
+ 	      item.classList.add(`${item.nodeName.toLowerCase()}_novalid`);
+ 	    }
+ 	  });
+
+ 	  return passed;
+ 	};
+
+ 	function submitForm(form) {
+ 
+ 	  if (validate(form)){
+ 		let formData = new FormData();
+ 	    [...form.querySelectorAll('[data-id]')].forEach(item => {
+ 	      formData.append(item.dataset.id, item.value);
+ 	    });
+ 	
+ 	  let ajax = new XMLHttpRequest();
+ 	  
+ 	  ajax.open( "POST", "example_parser.php" );
+ 	  
+ 	  ajax.onreadystatechange = function() {
+ 	  
+ 	  	if(ajax.readyState == 4 && ajax.status == 200) {
+ 	  		if(ajax.responseText == "success"){
+ 	  			setTimeout(function() {
+ 	  				let btnMessage = _q('.field__error_button');
+ 	  				btnMessage.style.display = 'block';		
+ 	  			}, 1000);		
+ 	  		}
+ 	  	}
+ 	  }
+ 	  
+ 	  ajax.send(formData);
+ 	  } 
+ 	};
+
+ 	[...document.querySelectorAll('.submit')].forEach(item => {
+ 	  item.addEventListener('click',  function(event) { 
+ 	    event.preventDefault();
+ 	    if(item.parentElement.parentElement.nodeName === 'FORM') {
+ 	       submitForm(item.parentElement.parentElement)
+ 	    } else if ( item.parentElement.nodeName === 'FORM' && item.previousElementSibling.classList.contains('active')) {
+ 	      submitForm(item.parentElement)
+ 	    }    
+ 	  });
+ 	});
+
+ 	_('input', '[data-type]', (e, el) => {
+ 	  let input = el;
+ 	  if (types[el.dataset.type].test(el.value)){
+ 	    input.classList.add(`${input.nodeName.toLowerCase()}_novalid`);
+ 	    input.classList.remove(`${input.nodeName.toLowerCase()}_novalid`);
+ 	  }
+ 	  /*else input.classList.add('form__input_novalid');*/
+ 	});
+
+ 	form.addEventListener('input', function(e) {
+ 		let inputStyle = document.getElementById('label-' + e.target.dataset.target).style;
+ 		inputStyle.opacity = (e.target.value.length)? '1' : '0';
+ 	})
+
+	
+	
+	/*----------------------- Change language ---------------------*/
  	let langGroup = _q('.lang__group');
  	langGroup.addEventListener('click', (e)=> {
  		langGroup.querySelectorAll('.lang__icon').forEach( item => {
@@ -182,9 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
  			changeLang(`data-${e.target.dataset.lang}.json`) : 
  			changeLang(`data-${e.target.parentNode.dataset.lang}.json`);	
  	})
-   /*-------------------- Change language --------------------------*/
+   /*----------------------- Change language ----------------------*/
 
- 	/*---------------------------- Canvas -------------------------*/
+ 	/*------------------------- Canvas ----------------------------*/
 
  	let colCanvas    = _qA('.progress__canvas'),
  	 	arrCanvas    = [];
@@ -258,8 +299,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	 	}					
 	});
 
+	/*------------------------- Canvas END-------------------------*/
+
  	
-	/*------------------ Nav Menu ------------------*/
+	/*------------------------- Nav Menu --------------------------*/
 
 	let
 		burger     = _q('.burger'),
@@ -281,9 +324,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		}	
 		menuList.style.left = (burger.classList.contains('burger__open'))? '0px' : '-9999px';
 	});
-	
+	/*------------------------- Nav Menu END-----------------------*/
 
-	// ====== Logo ======
+	/*------------------------- Logo ------------------------------*/
 	
 	let logo = _q('.logo');
 	
@@ -292,10 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	setTimeout(showLogo, 2000);
+
+	/*------------------------- Logo END---------------------------*/
 	
-	// ====== LogoEnd ======
-	
-	// ======== SCROOL CONTROL ==============
+	/*------------------------- SCROOL CONTROL --------------------*/
 
 	let navMenu = _q('.nav'),
 		aboutD  = _q('.about__descr'),
@@ -324,8 +367,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			aboutD.style.paddingTop = '0';
 		}		
 	});	
+	/*----------------------- SCROOL CONTROL END -----------------*/
 
-	// ========== SCROOL NAVIGATION ============
+	/*----------------------- SCROOL NAVIGATION ------------------*/
 
 	let link = document.querySelectorAll('.nav__link');
 
@@ -368,8 +412,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	 		}
 		});
 	}
+	/*----------------------- SCROOL NAVIGATION END---------------*/
 
-	/*============= WATCHING TAB =================*/
+	/*----------------------- WATCHING TAB -----------------------*/
 
 	let groupTab = document.querySelectorAll('header, section');
 	function watchTab(v) {
@@ -392,204 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			watchTab(v);
 		});
 	});
-
-
-/*------------------------- Form -----------------------*/
-
-/*function _(id){ return document.getElementById(id); }
-function _q(select) {return document.querySelector(select);}
-
-var formName = _q('.input[type=text]');
-var formEmail = _q('.input[type=email]');
-var formArea = _q('.textarea');
-var labelText = _q('#label-name');
-var labelEmail = _q('#label-email');
-var labelArea = _q('#label-area');
-var form = _q('#form');
-
-function clear() {
-=======
-	function _(id){ return document.getElementById(id); }
-	function _q(select) {return document.querySelector(select);}
-	
-	let formName = _q('.input[type=text]'),
-		formEmail = _q('.input[type=email]'),
-		formArea = _q('.textarea'),
-		labelText = _q('#label-name'),
-		labelEmail = _q('#label-email'),
-		labelArea = _q('#label-area'),
-		form = _q('#form');
-	
-	function clear() {
->>>>>>> preloader
-		formName.value = '';
-		formEmail.value = '';
-		formArea.value = '';
-		labelText.style.opacity = '0';
-		labelEmail.style.opacity = '0';
-		labelArea.style.opacity = '0';
-	}
-
-	function submitForm(){
-		_("submit").disabled = true;
-	
-		let Formdata = new FormData();
-	
-		Formdata.append( "n", _q('.input[type=text]').value );
-		Formdata.append( "e", _q('.input[type=email]').value );
-		Formdata.append( "m", _q('.textarea').value );
-		
-		var ajax = new XMLHttpRequest();
-	
-		ajax.open( "POST", "example_parser.php" );
-	
-		ajax.onreadystatechange = function() {
-		
-			if(ajax.readyState == 4 && ajax.status == 200) {
-				if(ajax.responseText == "success"){
-					setTimeout(function() {
-						let btnMessage = _('field__error_button');
-						btnMessage.style.display = 'block';
-						clear();	
-					}, 1000);		
-				}
-			}
-		}
-	
-		ajax.send(Formdata);
-	}
-
-
-
-*/
-
-form.addEventListener('input', function(e) {
-
-	var row = e.target;
-	var bibik = document.getElementById('label-' + row.dataset.target)
-	if(row.value.length > 0) {
-		
-		bibik.style.opacity = '1';
-	} else {
-		bibik.style.opacity = '0';
-	}
-
-})
-
-let _ = (events, target, func) => {
-  events.split(' ').forEach((event) => {
-    document.addEventListener(event, (e) => {
-      [...document.querySelectorAll(target)].forEach((item) => {
-        let element = e.target;
-        if (item == element)
-          return func(e, element);
-        else{
-          while(element.parentElement){
-            if (item == element){
-              return func(e, element);
-            }
-            else
-              element = element.parentElement;
-          }
-        }
-      });
-      return false;
-    });
-  });
-};
-
-let types = {
-  'email': /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-  'phone': /^\+([0-9]|\(|\)|.)+$/,
-  'text': /.+/,
-}
-
-_('input', '[data-type]', (e, el) => {
-  let input = el;
-  if (types[el.dataset.type].test(el.value)){
-    input.classList.add('valid');
-    input.classList.remove('form__input_novalid');
-  }
-  /*else input.classList.add('form__input_novalid');*/
-});
-
-
-
-let validate = (form) => {
-  let inputs = [...form.querySelectorAll('[data-type]')];
-  let passed = true;
-  let password;
- 	inputs.forEach(item => {
- 		console.log(item)
- 	})
-  inputs.forEach((item) => {
-    
-    if (item.dataset.type == 'password') password = item.value;
-    if ((types[item.dataset.type] && types[item.dataset.type].test(item.value)) || (item.value == password && item.value != '')){
-      item.classList.remove('form__input_novalid');
-    }
-    else{
-      passed = false;
-      item.classList.add('form__input_novalid');
-    }
-  });
-
-  return passed;
-};
-
-function submitForm(form) {
- 
-  var formData = new FormData();
-
-  if (validate(form)){
-
-    [...form.querySelectorAll('[data-id]')].forEach(item => {
-      formData.append(item.dataset.id, item.value);
-    });
-    fetch('example_parser.php', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'accept': 'application/json'
-      },
-      body: formData,
-      credentials: 'same-origin'
-    })
-   /* .then(resp => resp.json())
-    .then(resp => {
-      if (typeof(resp) != 'object') resp = JSON.parse(resp);
-      let status = resp.status;
-    })*/
-  } 
-}
-
-	 [...document.querySelectorAll('.submit')].forEach(item => {
-
-    	item.addEventListener('click',  function(event) { 
-    		
-    	  event.preventDefault();
-    	  if(item.parentElement.parentElement.nodeName === 'FORM') {
-    	     submitForm(item.parentElement.parentElement)
-
-    	  } /*else if ( item.parentElement.nodeName === 'FORM' && item.previousElementSibling.classList.contains('active')) {
-    	    submitForm(item.parentElement)	    
-    	  }*/    
-    	});
-  	})
-
-	form.addEventListener('input', function(e) {
-		let row = e.target;
-		let bibik = document.getElementById('label-' + row.dataset.target)
-		if(row.value.length > 0) {	
-			bibik.style.opacity = '1';
-		} else {
-			bibik.style.opacity = '0';
-		}
-	});
-
-
-	let formBtn = document.querySelector('#submit');
-	formBtn.addEventListener('click', submitForm);
+	/*----------------------- WATCHING TAB END--------------------*/
 };
 
 

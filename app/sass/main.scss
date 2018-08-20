@@ -1,6 +1,9 @@
 @import '_var/variables';
 @import '_mixins/mixin';
 @import '_components/preloader';
+@import '_components/triangle';
+@import '_components/language';
+@import '_components/burger';
 @import '_components/social-block';
 @import '_base/fonts';
 
@@ -63,78 +66,6 @@ body {
 			margin-left: -90px;
 		} 		
 	}
-}
-
-.triangle {
-	width: 0;
-	height: 0;
-	position: relative;
-	font-size: 0px;
-	
-	&__even {
-		border-top: 180px solid #F8F8FF;
-		border-left: 110px solid transparent;
-		border-right: 110px solid transparent;
-		transform: translateY(0);
-		animation-name: a1;
-		animation-duration: 3s;
-	} 
-
-	&__odd {
-		border-bottom: 180px solid #F8F8FF;
-		border-left: 110px solid transparent;
-		border-right: 110px solid transparent;
-		transform: translateY(0);
-		animation-name: a2;
-		animation-duration: 3s;
-	}
-
-	&__desc {
-		font-size: 25px;
-		color: black;
-		position: absolute;
-		text-transform: uppercase;
-		font-weight: bold;
-		
-		&_top {
-			top: 145px;
-			left: 50%;
-			transform: translate(-50%,-50%); 
-		}
-		
-		&_btm {
-			top: -150px;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
-
-	&__icon {
-		width: 30px;
-		height: 30px;
-		background-color: green;
-		position: absolute;
-		
-		&_odd {
-			top: 75px;
-			left: -15px;
-		}
-
-		&_even {
-			bottom: 75px;
-			right: -15px;
-		}
-	}
-
-	@keyframes a1 {
-		from {transform: translateY(-80px)}
-		to   {transform: translateY(0)}
-	}
-
-	@keyframes a2 {
-		from {transform: translateY(80px)}
-		to   {transform: translateY(0)}
-	}		
 }
 
 /* ==================== Components from Header End ============ */
@@ -210,60 +141,6 @@ body {
 
 /* ==================== Components for NavBar =============== */
 
-.lang {
-
-	&__group {
-		display: flex;		
-	}
-
-	&__item {
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-		padding-right: 15px;
-		transition: transform .5s;
-		
-
-		&:hover {
-			transform: scale(1.2);
-		}
-	}
-
-	&__icon {
-		width: 35px;
-		height: 20px;
-		margin-right: 5px;
-		background-size: cover;
-		background-position: center;
-		filter: grayscale(.9);
-
-		&_active {
-			filter: grayscale(0);
-		}
-
-		&:hover {
-			filter: grayscale(0);
-		}
-
-
-		&_ua {
-			background-image: url(../img/ua.png);
-		}
-
-		&_uk {
-			background-image: url(../img/usa.png);
-		}
-
-		&_ru {
-			background-image: url(../img/ru.png);
-		}
-	}
-
-	&__descr {
-		color: #fff;
-	}
-}
-
 .menu {
 	@extend %reset;			
 	background-color: $color-main;
@@ -274,14 +151,11 @@ body {
 
 	@include medium-screen {
 		display: flex;
-		justify-content: flex-end;
 	}
 
 	&__item {
-		flex: 0 1 100px;
-		
+		margin-right: 20px;
 		position: relative;
-		
 		list-style-type: none;
 		transition: all .5s;
 	}
@@ -292,6 +166,7 @@ body {
 
 .nav {
 	background-color: $color-main;
+	position: relative;
 
 	&_fixed {
 		position: fixed;
@@ -301,110 +176,69 @@ body {
 		width: 100%;
 	}
 
-	&__wrapper {
-		padding: 20px 0;
-		position: relative;	
+	&__wrapper {	
+		width: 100%;
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
-		/* justify-content: space-between; */
+
 		@include medium-screen() {
 			flex-wrap: nowrap;
+			padding: 10px 0;  
 		}
 	}
 
 	&__lang {
 		flex: 1 1 auto;
+		
+
+		@include small-screen() {
+			margin-right: 0;
+		}
 
 		@include medium-screen() {
-			flex: 0 1 auto;
+			flex: 1 1 auto;
 		}
 	}
 
-	&__burger {
+	&__burger {		
 		display: flex;
-		justify-content: flex-end;
-
-		.burger {
-			width: 36px;
-			height: 50px;
-			display: block;
-			position: relative;
-			line-height: 50px;
-			cursor: pointer;
-			
-			@include medium-screen {
-				display: none;
-			}
-
-			&__elem {
-				margin: auto;
-				width: 36px;
-				height: 2px;
-				display: block;
-				position: absolute;
-				top: 0;
-				right: 0;
-				left: 0;
-				bottom: 0;
-				opacity: 1;
-				background-color: $color-white;
-				transition: .25s ease-in-out;
-
-				&:first-child {
-					top: -16px;	
-					border-radius: 5px;
-				}
-
-				&:last-child {
-					top: 15px;		
-					border-radius: 5px;
-				}
-
-				&_open:first-child {
-					top: 0;
-					
-					transform: rotate(-135deg);
-				}
-
-				&_open:nth-child(2) {
-					opacity: 0;
-				}
-
-				&_open:last-child {
-					background-color: $color-add;
-					top: 0;
-					transform: rotate(135deg);
-				}
-			}
-		}
+		justify-content: flex-end;	
 	}
 
 	&__menu {
-		width: 100%;
+		padding: 10px 0;
 		position: absolute;
 		top: 50px;
 		left: -1999px;
 		z-index: 55;
 		transition: left 1s ease;
 		background-color: $color-main;
+		border-top: 1px solid white;
 	
 		@include medium-screen {
 			position: static;
+			border-top: none;
 		}	
 	}
 
-	&__link {		
-		display: inline-block;
+	&__link {
+		padding:  10px 0;	
+		display: block;
 		position: relative;
 		text-align: center;	
 		text-transform: uppercase;
 		text-decoration: none;
 		font: 15px $font-robotoReg;
 		color: #fff;
-		
+
+		@include medium-screen() {
+			padding: 0;
+			display: inline-block;
+		}
+	
 		&_active {
-				color: $color-add;
+			color: $color-add;
 		}
 
 		&:hover {
@@ -416,36 +250,39 @@ body {
 			right: 0;
 			background-color: opacify($color-add,.7)
 		}
-
-		&:hover:after {
-			left: 0;
-			right: 0;
-			background-color: opacify($color-add,.7)
+		
+		@include medium-screen() {
+			&:hover:after {
+				left: 0;
+				right: 0;
+				background-color: opacify($color-add,.7)
 		}
 		
-		&:after {
-			content: '';
-			display: block;
-			position: absolute;
-			left: 55%;
-			right: 55%;
-			bottom: -7px;
-			height: 2px;
-			background: transparentize($color-add,1);
-			transition: all .4s;	
-		}
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 55%;
+				right: 55%;
+				bottom: -7px;
+				height: 2px;
+				background: transparentize($color-add,1);
+				transition: all .4s;	
+			}
 
-		&:before {
-			content: '';
-			display: block;
-			position: absolute;
-			left: 55%;
-			right: 55%;
-			top: -9px;
-			height: 2px;
-			background: transparentize($color-add,1);
-			transition: all .4s;	
-		}	
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 55%;
+				right: 55%;
+				top: -9px;
+				height: 2px;
+				background: transparentize($color-add,1);
+				transition: all .4s;	
+			}
+		}
+			
 	}
 }
 
@@ -523,7 +360,6 @@ body {
 	}
 
 	&__photo {
-		/* padding-top: 50px; */
 		display: none;
 
 		@include large-screen {
@@ -761,13 +597,12 @@ body {
 	}	
 
 	&_k-full {
-		background-image: url('../img/k-full.png');
+		background-image: url('../img/K-Full.png');
 	}
 
 	&_pension {
 		background-image: url('../img/777.png');
-		/* background-size: cover; */
-	 background-position: 50% 50%;  
+	 	background-position: 50% 50%;  
 	}
 
 	&_green {
@@ -1036,6 +871,10 @@ body {
 								background: linear-gradient(#333, #21262c);
 								color: white;
 
+								&_novalid {
+									animation: novalid 800ms ease-out infinite alternate;
+								}
+
 								&:focus {
 									animation: glow 800ms ease-out infinite alternate;
 									background: #222922;
@@ -1058,6 +897,17 @@ body {
 							    }
 							}
 
+							@keyframes novalid {
+							    0% {
+									border-color: red;
+									box-shadow: 0 0 25px rgba(255,43,43,.2), inset 0 0 25px rgba(255,43,43,.1), 0 2px 0 #000;
+							    }	
+							    100% {
+									border-color: red;
+									box-shadow: 0 0 30px rgba(255,43,43,.6), inset 0 0 30px rgba(255,43,43,.4), 0 2px 0 #000;
+							    }
+							}
+
 							.textarea {
 								width: 100%;
 								padding: 15px 15px;
@@ -1065,6 +915,10 @@ body {
 								border: 1px solid #444;
                                 background: linear-gradient(#333, #21262c);
                                 color: white;
+
+                                &_novalid {
+									animation: novalid 800ms ease-out infinite alternate;
+                                }
 
 								&:focus {
 									animation: glow 800ms ease-out infinite alternate;
@@ -1098,9 +952,10 @@ body {
 
 					&__error {
 						padding: 5px 20px 0;
-					    display: none;
+					  	display: block;
 						text-align: right;		
 						color: #E87E04;
+						
 
 						&_button {
 							text-align: center;
@@ -1115,10 +970,6 @@ body {
 			}
 		}
 	}
-}
-
-.form__input_novalid {
-	border: 1px solid red !important;
 }
 
 .footer {

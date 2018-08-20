@@ -1,0 +1,71 @@
+.triangle {
+	width: 0;
+	height: 0;
+	position: relative;
+	font-size: 0px;
+	
+	&__even {
+		border-top: 180px solid #F8F8FF;
+		border-left: 110px solid transparent;
+		border-right: 110px solid transparent;
+		transform: translateY(0);
+		animation-name: a1;
+		animation-duration: 3s;
+	} 
+
+	&__odd {
+		border-bottom: 180px solid #F8F8FF;
+		border-left: 110px solid transparent;
+		border-right: 110px solid transparent;
+		transform: translateY(0);
+		animation-name: a2;
+		animation-duration: 3s;
+	}
+
+	&__desc {
+		font-size: 25px;
+		color: black;
+		position: absolute;
+		text-transform: uppercase;
+		font-weight: bold;
+		
+		&_top {
+			top: 145px;
+			left: 50%;
+			transform: translate(-50%,-50%); 
+		}
+		
+		&_btm {
+			top: -150px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__icon {
+		width: 30px;
+		height: 30px;
+		background-color: green;
+		position: absolute;
+		
+		&_odd {
+			top: 75px;
+			left: -15px;
+		}
+
+		&_even {
+			bottom: 75px;
+			right: -15px;
+		}
+	}
+
+	@keyframes a1 {
+		from {transform: translateY(-80px)}
+		to   {transform: translateY(0)}
+	}
+
+	@keyframes a2 {
+		from {transform: translateY(80px)}
+		to   {transform: translateY(0)}
+	}		
+}

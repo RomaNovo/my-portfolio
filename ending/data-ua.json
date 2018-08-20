@@ -137,6 +137,8 @@
 					"input-type" : "text",
 					"field-error" : "введіть ваше ім'я",
 					"data-target" : "name",
+					"data-id" : "name",
+					"data-type" : "text",
 					"placeholder" : "Ваше ім'я"
 				},
 
@@ -146,6 +148,8 @@
 					"input-type" : "email",
 					"field-error" : "введіть вашу пошту",
 					"data-target" : "email",
+					"data-id" : "email",
+					"data-type" : "email",
 					"placeholder" : "Ваша пошта"
 				}
 			],
@@ -154,7 +158,9 @@
 				{
 					"area-descr" : "Ваше повідомлення",
 					"area-placeholder" : "Ваше повідомлення...",
-					"area-error" : "Введіть ваше повідомлення"
+					"area-error" : "Введіть ваше повідомлення",
+					"data-id" : "message",
+					"data-type" : "text"
 				}
 			],
 

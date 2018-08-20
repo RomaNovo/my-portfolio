@@ -51,14 +51,16 @@
 			text-transform: uppercase;
 			/* color: #EC7C26; */
 			color: white;
-			letter-spacing: 4px;
+			letter-spacing: 2px;
 
 			@include small-screen() {
+				letter-spacing: 8px;
 				font-size: 55px;
 			}
 
 			@include medium-screen() {
 				font-size: 100px;
+				letter-spacing: 10px;
 			}
 		}
 	}

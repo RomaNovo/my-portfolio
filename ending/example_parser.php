@@ -1,8 +1,8 @@
 <?php
-if( isset($_POST['n']) && isset($_POST['e']) && isset($_POST['m']) ){
-	$n = $_POST['n']; // HINT: use preg_replace() to filter the data
-	$e = $_POST['e'];
-	$m = nl2br($_POST['m']);
+if( isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) ){
+	$n = $_POST['name']; // HINT: use preg_replace() to filter the data
+	$e = $_POST['email'];
+	$m = nl2br($_POST['message']);
 	$to = "roma_1985_roma@mail.ru";	
 	$from = $e;
 	$subject = 'Contact Form Message';
