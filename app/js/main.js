@@ -6,7 +6,29 @@ function _qA(select) {
 	return document.querySelectorAll(select);
 }
 
-let condt = true; 
+let _ = (events, target, func) => {
+	events.split(' ').forEach((event) => {
+		document.addEventListener(event, (e) => {
+			[...document.querySelectorAll(target)].forEach((item) => {
+				let element = e.target;
+				if (item == element)
+					return func(e, element);
+				else {
+					while (element.parentElement) {
+						if (item == element) {
+							return func(e, element);
+						}
+						else
+							element = element.parentElement;
+					}
+				}
+			});
+			return false;
+		});
+	});
+};
+
+let condt = false; 
 
 let content = document.getElementById('content').innerHTML;
 
@@ -108,30 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
  function init() {
 	let preloader = document.querySelector('.preloader');
 	(!condt)? preloader.remove() : condt = false;
-
-	
-
- 	let _ = (events, target, func) => {
- 	  events.split(' ').forEach((event) => {
- 	    document.addEventListener(event, (e) => {
- 	      [...document.querySelectorAll(target)].forEach((item) => {
- 	        let element = e.target;
- 	        if (item == element)
- 	          return func(e, element);
- 	        else{
- 	          while(element.parentElement){
- 	            if (item == element){
- 	              return func(e, element);
- 	            }
- 	            else
- 	              element = element.parentElement;
- 	          }
- 	        }
- 	      });
- 	      return false;
- 	    });
- 	  });
- 	};
 
  	let types = {
  	  'email': /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -308,22 +306,27 @@ document.addEventListener('DOMContentLoaded', () => {
 		burger     = _q('.burger'),
 		burgerElem = _qA('.burger__elem'),
 		menuList   = _q('.nav__menu');
+	 	function burgerActive() {
+		 burger.classList.toggle('burger__open');
 
-
-	burger.addEventListener('click', function() {
-		burger.classList.toggle('burger__open');
-
-		if(burger.classList.contains('burger__open')) {
-			burgerElem.forEach(function(v) {
-				v.classList.add('burger__elem_open');
-			})	
-		} else {
-			burgerElem.forEach(function(v) {
-				v.classList.remove('burger__elem_open');
-			})
-		}	
-		menuList.style.left = (burger.classList.contains('burger__open'))? '0px' : '-9999px';
-	});
+		 if (burger.classList.contains('burger__open')) {
+			 burgerElem.forEach(function (v) {
+				 v.classList.add('burger__elem_open');
+			 })
+		 } else {
+			 burgerElem.forEach(function (v) {
+				 v.classList.remove('burger__elem_open');
+			 })
+		 }
+		 menuList.style.left = (burger.classList.contains('burger__open')) ? '0px' : '-9999px';
+	 }	
+		
+		burger.addEventListener('click', burgerActive)	;
+				
+		
+		
+		
+	
 	/*------------------------- Nav Menu END-----------------------*/
 
 	/*------------------------- Logo ------------------------------*/
@@ -353,15 +356,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			navMenu.classList.remove('nav_fixed');
 			aboutD.style.paddingTop = '0';
 		}
-	
 
 	window.addEventListener('scroll', function() {
 		let scrollTop = document.documentElement.scrollTop;
 				
 		if( height < scrollTop) {
 			navMenu.classList.add('nav_fixed');
-		    aboutD.style.paddingTop = '68px';
-					
+		    aboutD.style.paddingTop = '68px';				
 		} else if( height > scrollTop){
 			navMenu.classList.remove('nav_fixed');
 			aboutD.style.paddingTop = '0';
@@ -378,9 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		link[i].addEventListener('click', function() {
 			event.preventDefault();
+			burgerActive();
 			scroll      = window.pageYOffset;
 			blockHeight = document.querySelector(this.getAttribute('href')).offsetTop;
-
+			
 			if(scroll < blockHeight) {
 				my_scrollDown();
 			} else if(scroll > blockHeight) {

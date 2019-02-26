@@ -177,31 +177,32 @@
 
 	"footer" : [
 		{
-			"author" : "Copyright © 2018 Novomodniy Roman.",
+			"author" : "Novomodniy Roman",
+			"copy" : "Copyright © 2018",
 			"social-group" : [
 				{
-					"add-class" : "soc-elem__link_google",
-					"icon-class" : "fa fa-google",
-					"link-href" : "#"
+					"add-class" : "soc-elem__link_telegram",
+					"icon-class" : "fab fa-telegram",
+					"link-href" : "tg://resolve?domain=@romanovomodniy"
 				},
 				{
-					"add-class" : "soc-elem__link_facebook",
-					"icon-class" : "fa fa-facebook",
-					"link-href" : "#"
+					"add-class" : "soc-elem__link_viber",
+					"icon-class" : "fab fa-viber",
+					"link-href" : "viber://add?number=380509273857"
 				},
 				{
 					"add-class" : "soc-elem__link_linkedin",
-					"icon-class" : "fa fa-linkedin",
-					"link-href" : "#"
+					"icon-class" : "fab fa-linkedin",
+					"link-href" : "https://www.linkedin.com/in/%D1%80%D0%BE%D0%BC%D0%B0-%D0%BD%D0%BE%D0%B2%D0%BE%D0%BC%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9-1200b5139/"
 				},
 				{
 					"add-class" : "soc-elem__link_github",
-					"icon-class" : "fa fa-github",
+					"icon-class" : "fab fa-github",
 					"link-href" : "https://github.com/RomaNovo"
 				},
 				{
 					"add-class" : "soc-elem__link_skype",
-					"icon-class" : "fa fa-skype",
+					"icon-class" : "fab fa-skype",
 					"link-href" : "skype:romaaaaa435"
 				}
 			]
